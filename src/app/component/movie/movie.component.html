@@ -1,4 +1,4 @@
-<div *ngIf="movie">
+<div class="main" *ngIf="movie">
   <div
     class="movie-backdrop"
     [ngStyle]="{ 'background-image': 'url(' + movie.movieUrlPosterImage + ')' }"
@@ -25,9 +25,7 @@
             </dl>
             <dl class="movie-meta-cast">
               <dt>Starring:</dt>
-            </dl>
-            <dl class="movie-meta-runtime">
-              <dt>Running Time:</dt>
+              <dd>{{ movie.movieStars }}</dd>
             </dl>
           </div>
         </div>

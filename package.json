@@ -36,6 +36,7 @@
     "jszip": "^3.1.5",
     "mdbootstrap": "^4.10.0",
     "minireset.css": "~0.0.4",
+    "ngx-router-animations": "0.0.9",
     "resize-observer-polyfill": "^1.5.1",
     "rxjs": "~6.5.3",
     "tslib": "^1.9.0",

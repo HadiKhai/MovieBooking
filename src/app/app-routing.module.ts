@@ -19,11 +19,11 @@ import { AdminMovieEventTimesComponent } from "./component/admin-movie-event-tim
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
-  { path: "home", component: HomeComponent },
-  { path: "movies", component: MoviesComponent },
+  { path: "home", component: HomeComponent, data: { state: "home" } },
+  { path: "movies", component: MoviesComponent, data: { state: "movies" } },
 
   { path: "movies/:id", component: MovieComponent },
-  { path: "admin", component: AdminComponent },
+  { path: "admin", component: AdminComponent, data: { state: "admin" } },
   { path: "admin/movie", component: AdminMovieComponent },
   {
     path: "admin/movie/:id",

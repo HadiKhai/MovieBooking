@@ -42,9 +42,11 @@
     </div>
   </nav>
 </header>
-<main id="main" class="site-main main">
-  <router-outlet></router-outlet>
-</main>
+<div class="router-wrapper" [@rotateCubeToLeft]="getState(o)">
+  <main id="main" class="site-main main">
+    <router-outlet #o="outlet"></router-outlet>
+  </main>
+</div>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
