@@ -151,8 +151,8 @@ CREATE TABLE `movie` (
   `movie_releasedate` date NOT NULL,
   `movie_directors` varchar(45) NOT NULL,
   `movie_stars` varchar(45) NOT NULL,
-  `movie_urlImage` varchar(100) NOT NULL,
-  `movie_urlPosterImage` varchar(100) NOT NULL,
+  `movie_urlImage` varchar(500) NOT NULL,
+  `movie_urlPosterImage` varchar(500) NOT NULL,
   PRIMARY KEY (`movie_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -347,4 +347,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-08 21:02:50
+-- Dump completed on 2019-12-08 22:51:03
