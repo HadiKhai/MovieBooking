@@ -1,0 +1,43 @@
+<div class="container cnt">
+  <span
+    class="cursor"
+    routerLink="/admin/showing/cinemas"
+    style="font-size: 3em; color: #04628f;"
+  >
+    <i class="fas fa-arrow-circle-left"></i>
+  </span>
+</div>
+<div>
+  <div class="container">
+    <table class="table table-bordered table-inverse">
+      <tr>
+        <th>Room Id</th>
+        <th>Room Capacity</th>
+        <th>Room Type</th>
+        <th>Choose Movie</th>
+      </tr>
+      <tr *ngFor="let room of rooms">
+        <td>
+          {{ room.roomId }}
+        </td>
+        <td>
+          {{ room.roomCapacity }}
+        </td>
+        <td>
+          {{ room.roomType }}
+        </td>
+        <td>
+          <span
+            class="cursor"
+            routerLink="/admin/showing/cinemas/{{ cinemaId }}/rooms/{{
+              room.roomId
+            }}/movies"
+            style="font-size: 3em; color: #04628f"
+          >
+            <i class="fas fa-film cursor"></i>
+          </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

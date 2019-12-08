@@ -1,0 +1,13 @@
+.slide {
+  width: 100vw;
+  height: 70vh;
+}
+.link {
+  color: #e8e7e7dd;
+  text-decoration: none;
+}
+
+.linkd :hover {
+  color: #8a8a8add;
+  text-shadow: 2px 2px 4px #000000;
+}

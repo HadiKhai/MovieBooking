@@ -1,0 +1,27 @@
+<ngb-carousel
+  class="movie-s"
+  #carousel
+  interval="1200"
+  [pauseOnHover]="pauseOnHover"
+  (slide)="onSlide($event)"
+>
+  <ng-template ngbSlide *ngFor="let movie of movies" class="movie-s">
+    <div class="carousel-caption d-none d-md-block linkd">
+      <h3>
+        <a class="link" routerLink="/movies/{{ movie.movieId }}">{{
+          movie.movieName
+        }}</a>
+      </h3>
+    </div>
+    <a target="_blank" rel="nofollow noopener noreferrer">
+      <div class="picsum-img-wrapper" class="carousel">
+        <img
+          clas="mh-100"
+          class="slide"
+          src="{{ movie.movieUrlPosterImage }} "
+          alt="{{ movie.movieName }}"
+        />
+      </div>
+    </a>
+  </ng-template>
+</ngb-carousel>

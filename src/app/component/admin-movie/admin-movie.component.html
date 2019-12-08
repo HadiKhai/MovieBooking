@@ -1,0 +1,280 @@
+<div class="container cnt">
+  <div
+    class="btn-group btn-group-lg"
+    role="group"
+    aria-label="Large button group"
+  >
+    <button
+      type="button"
+      class="btn btn-secondary active"
+      routerLink="/admin/movie"
+    >
+      Movie
+    </button>
+    <button type="button" class="btn btn-secondary" routerLink="/admin/cinema">
+      Cinema
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary btnadd"
+      routerLink="/admin/showing/cinemas"
+    >
+      Movie event
+    </button>
+  </div>
+  <button
+    type="button"
+    class="btn btn-secondary active"
+    (click)="toggleDisplay()"
+  >
+    Add
+  </button>
+</div>
+<div *ngIf="isShow">
+  <div class="container">
+    <table class="table table-bordered table-inverse">
+      <tr>
+        <th>Movie ID</th>
+        <th>Movie Name</th>
+        <th>Movie Description</th>
+        <th>Movie Directors</th>
+        <th>Movie Duration</th>
+        <th>Movie Genre</th>
+        <th>Movie Release date</th>
+        <th>Movie Stars</th>
+        <th>Movie Image</th>
+        <th>Movie Poster</th>
+        <th>Rating</th>
+        <th>Delete</th>
+        <th>Edit</th>
+      </tr>
+      <tr *ngFor="let movie of movies">
+        <td>
+          {{ movie.movieId }}
+        </td>
+        <td>
+          {{ movie.movieName }}
+        </td>
+        <td>
+          {{ movie.movieDescription }}
+        </td>
+        <td>
+          {{ movie.movieDirectors }}
+        </td>
+        <td>
+          {{ movie.movieDuration }}
+        </td>
+        <td>
+          {{ movie.movieGenre }}
+        </td>
+        <td>
+          {{ movie.movieReleaseDate }}
+        </td>
+        <td>
+          {{ movie.movieStars }}
+        </td>
+        <td>
+          <img
+            class="cursor"
+            (click)="open(content)"
+            src="{{ movie.movieUrlImage }}"
+          />
+        </td>
+        <td>
+          <img
+            class="cursor"
+            (click)="open(content1)"
+            src="{{ movie.movieUrlPosterImage }}"
+          />
+        </td>
+        <td>
+          <span
+            style="font-size: 3em; color: rgb(25, 255, 4);"
+            routerLink="/admin/movie/{{ movie.movieId }}/ratings"
+          >
+            <i class="fas fa-star-half-alt cursor"></i>
+          </span>
+        </td>
+        <td>
+          <span
+            (click)="open(confirm)"
+            style="font-size: 3em; color:  rgb(245, 19, 19);"
+          >
+            <i class="fas fa-trash cursor"></i>
+          </span>
+        </td>
+        <td>
+          <span
+            style="font-size: 3em; color: rgb(248, 152, 8);"
+            routerLink="/admin/movie/{{ movie.movieId }}"
+          >
+            <i class="far fa-edit cursor"></i>
+          </span>
+        </td>
+        <ng-template #confirm let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">Movie Deletion</h4>
+            <button
+              type="button"
+              class="close"
+              aria-describedby="modal-title"
+              (click)="modal.dismiss('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Are you sure you want to delete movie? </strong></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              (click)="modal.dismiss('cancel click')"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="deleteMovie(movie.movieId)"
+              (click)="modal.close('Ok click')"
+            >
+              Ok
+            </button>
+          </div>
+        </ng-template>
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Image</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="img">
+              <img src="{{ movie.movieUrlImage }}" />
+            </div>
+          </div>
+        </ng-template>
+        <ng-template #content1 let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title1">Image</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="img">
+              <img src="{{ movie.movieUrlPosterImage }}" />
+            </div>
+          </div>
+        </ng-template>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="container" *ngIf="!isShow">
+  <form [formGroup]="movieForm" (ngSubmit)="submitRegistration()" novalidate>
+    <div *ngIf="validMessage != ''">
+      <h3 class="has-info">{{ validMessage }}</h3>
+    </div>
+    <div class="form-group">
+      <label>Movie Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieName"
+        required
+        autofocus
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Description</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="movieDescription"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Director</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieDirectors"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Duration</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieDuration"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie genre</label>
+      <select class="form-control" formControlName="movieGenre" required>
+        <option value="">Please select the movie genre</option>
+        <option *ngFor="let c of movieGenreO" [value]="c">
+          {{ c }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Movie Release Date</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieReleaseDate"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Stars</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieStars"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Image </label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieUrlImage"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Image Poster</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieUrlPosterImage"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </form>
+</div>

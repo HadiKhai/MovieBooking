@@ -1,0 +1,121 @@
+<div class="container cnt">
+  <div
+    class="btn-group btn-group-lg"
+    role="group"
+    aria-label="Large button group"
+  >
+    <button
+      type="button"
+      class="btn btn-secondary active"
+      routerLink="/admin/movie"
+    >
+      Movie
+    </button>
+    <button type="button" class="btn btn-secondary" routerLink="/admin/cinema">
+      Cinema
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary btnadd"
+      routerLink="/admin/showing/cinemas"
+    >
+      Movie event
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <form [formGroup]="movieForm" (ngSubmit)="submitRegistration()" novalidate>
+    <div *ngIf="validMessage != ''">
+      <h3 class="has-info">{{ validMessage }}</h3>
+    </div>
+    <div class="form-group">
+      <label>Movie Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieName"
+        required
+        autofocus
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Description</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="movieDescription"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Director</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieDirectors"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Duration</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieDuration"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie genre</label>
+      <select class="form-control" formControlName="movieGenre" required>
+        <option>{{ movie.movieGenre }}</option>
+        <ng-container *ngFor="let c of movieGenreO">
+          <option *ngIf="c != movie.movieGenre">
+            {{ c }}
+          </option>
+        </ng-container>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Movie Release Date</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieReleaseDate"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Stars</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieStars"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Image </label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieUrlImage"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Movie Image Poster</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="movieUrlPosterImage"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </form>
+</div>

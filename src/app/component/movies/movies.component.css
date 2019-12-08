@@ -1,0 +1,18 @@
+.top-movies {
+  background: #2a628f;
+}
+.mb-4 {
+  color: #e8e7e7dd;
+
+  font-weight: 300;
+  font-size: 3.75rem;
+  letter-spacing: -0.03125rem;
+  text-transform: none;
+  line-height: 4.4375rem;
+  margin-top: 1.75rem;
+}
+
+.ctn {
+  background: #2a628f;
+  width: 100%;
+}

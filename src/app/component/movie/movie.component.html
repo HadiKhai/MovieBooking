@@ -1,0 +1,37 @@
+<div *ngIf="movie">
+  <div
+    class="movie-backdrop"
+    [ngStyle]="{ 'background-image': 'url(' + movie.movieUrlPosterImage + ')' }"
+  ></div>
+  <div class="container">
+    <div class="movie-data row">
+      <div class="col-md-4">
+        <div class="movie-poster">
+          <img
+            class="img-fluid"
+            src="{{ movie.movieUrlImage }}"
+            alt="{{ movie.movieName }}"
+          />
+        </div>
+      </div>
+      <div class="col-md-8">
+        <h2 class="movie-title">{{ movie.movieName }}</h2>
+        <div class="movie-info">
+          <p class="movie-overview">{{ movie.movieDescription }}</p>
+          <div class="movie-meta">
+            <dl class="movie meta-director">
+              <dt>Director:</dt>
+              <dd>{{ movie.movieDirectors }}</dd>
+            </dl>
+            <dl class="movie-meta-cast">
+              <dt>Starring:</dt>
+            </dl>
+            <dl class="movie-meta-runtime">
+              <dt>Running Time:</dt>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

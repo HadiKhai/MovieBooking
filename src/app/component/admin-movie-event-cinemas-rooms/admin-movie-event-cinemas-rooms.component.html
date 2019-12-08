@@ -1,0 +1,90 @@
+<div class="container cnt">
+  <span
+    class="cursor"
+    routerLink="/admin/showing/cinemas/{{ cinemaId }}/rooms"
+    style="font-size: 3em; color: #04628f;"
+  >
+    <i class="fas fa-arrow-circle-left"></i>
+  </span>
+  <button
+    type="button"
+    routerLink="/admin/showing/cinemas/{{ cinemaId }}/rooms/{{
+      roomId
+    }}/movies/addmovie"
+    class="btn btn-secondary active"
+  >
+    Add
+  </button>
+</div>
+<div>
+  <div class="container">
+    <table class="table table-bordered table-inverse">
+      <tr>
+        <th>Movie Name</th>
+        <th>Movie Start Time</th>
+        <th>Movie End Time</th>
+        <th>Delete</th>
+      </tr>
+      <tr *ngFor="let movie of movies">
+        <td>
+          {{ movie.movieName }}
+        </td>
+        <td>
+          {{ movie.movieStartTime }}
+        </td>
+        <td>
+          {{ movie.movieEndTime }}
+        </td>
+        <td>
+          <span
+            class="cursor"
+            (click)="open(confirm)"
+            style="font-size: 3em;color:  rgb(245, 19, 19);"
+          >
+            <i class="fas fa-trash cursor"></i>
+          </span>
+        </td>
+        <ng-template #confirm let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">Movie Deletion</h4>
+            <button
+              type="button"
+              class="close"
+              aria-describedby="modal-title"
+              (click)="modal.dismiss('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Are you sure you want to delete this Event? </strong></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              (click)="modal.dismiss('cancel click')"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="
+                deleteMovieEvent(
+                  cinemaId,
+                  roomId,
+                  movie.movieId,
+                  movie.movieEventId
+                )
+              "
+              (click)="modal.close('Ok click')"
+            >
+              Ok
+            </button>
+          </div>
+        </ng-template>
+      </tr>
+    </table>
+  </div>
+</div>
