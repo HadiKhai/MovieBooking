@@ -11,6 +11,7 @@ import { MovieService } from "src/app/services/Movie/movie.service";
 export class MovieComponent implements OnInit {
   movie;
   showAllTimes = false;
+  id;
   constructor(
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
@@ -18,7 +19,8 @@ export class MovieComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getMovieById(this.route.snapshot.params.id);
+    this.id = this.route.snapshot.params.id;
+    this.getMovieById(this.id);
   }
 
   getMovieById(id: number) {

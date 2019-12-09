@@ -4,16 +4,15 @@
     <button
       class="navbar-toggler"
       type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+      (click)="isMenuCollapsed = !isMenuCollapsed"
     >
-      <span class="navbar-toggler-icon"></span>
+      &#9776;
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div
+      class="collapse navbar-collapse"
+      [ngbCollapse]="isMenuCollapsed"
+      id="navbarSupportedContent"
+    >
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" id="Home" routerLink="/home">Home </a>
@@ -42,9 +41,7 @@
     </div>
   </nav>
 </header>
-<main id="main" class="site-main main">
-  <router-outlet #o="outlet"></router-outlet>
-</main>
+<router-outlet #o="outlet"></router-outlet>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>

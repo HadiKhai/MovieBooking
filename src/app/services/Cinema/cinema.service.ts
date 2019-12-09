@@ -14,7 +14,9 @@ export class CinemaService {
   getCinemas() {
     return this.http.get("server/admin/cinemas");
   }
-
+  getCinemasFromMovie(id) {
+    return this.http.get("server/booking/movies/" + id);
+  }
   createCinema(cinema) {
     let body = JSON.stringify(cinema);
     return this.http.post("/server/admin/cinemas", body, httpOptions);

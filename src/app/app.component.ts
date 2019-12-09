@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 export class AppComponent {
   title = "CinemaBookingRAH";
   val;
+  public isMenuCollapsed = true;
   constructor(private router: Router) {
     router.events.subscribe(val => {
       this.val = val;

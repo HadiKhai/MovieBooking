@@ -1,0 +1,15 @@
+<div class="cinemas">
+  <div class="cinema">
+    <div class="cinema-Branch">Cinema Branches</div>
+    <div class="cinema-section">
+      <ul>
+        <li class="cinema-section-detail" *ngFor="let cinema of cinemas">
+          <a>
+            <p>{{ cinema.cinemaName }}</p>
+            <span>{{ cinema.cinemaAddress }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
