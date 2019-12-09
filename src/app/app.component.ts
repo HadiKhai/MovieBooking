@@ -1,7 +1,5 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { rotateCubeToLeft } from "ngx-router-animations";
-import { trigger, transition, useAnimation } from "@angular/animations";
 
 @Component({
   selector: "app-root",
