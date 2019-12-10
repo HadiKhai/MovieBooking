@@ -1,6 +1,5 @@
 .movies {
-  background: #2a628f;
-  height: 100vh;
+  background: linear-gradient(0deg, #041625, #184974 60%) fixed no-repeat;
 }
 .mb-4 {
   color: #e8e7e7dd;
@@ -14,6 +13,7 @@
 }
 
 .ctn {
-  background: #2a628f;
+  margin-top: 15vh;
+  background: #2a628f00;
   width: 100%;
 }

@@ -4,7 +4,7 @@
     <div class="cinema-section">
       <ul>
         <li class="cinema-section-detail" *ngFor="let cinema of cinemas">
-          <a>
+          <a (click)="toggleComponent()" (click)="cinemaSave(cinema.cinemaId)">
             <p>{{ cinema.cinemaName }}</p>
             <span>{{ cinema.cinemaAddress }}</span>
           </a>
@@ -13,3 +13,7 @@
     </div>
   </div>
 </div>
+<app-movie-cinemas-rooms
+  *ngIf="!toggle"
+  [cinemaId]="cinemaId"
+></app-movie-cinemas-rooms>

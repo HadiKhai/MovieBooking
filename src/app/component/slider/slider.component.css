@@ -1,6 +1,9 @@
 .slide {
   width: 100vw;
-  height: 70vh;
+  height: 90vh;
+  max-width: 100%;
+  /* padding-top: 6.5vh;
+  background-color: black; */
 }
 .link {
   color: #e8e7e7dd;

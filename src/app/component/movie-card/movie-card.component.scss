@@ -174,8 +174,64 @@
 
 .moviegrid-item {
   margin-bottom: 20px;
+  height: 80vh;
 }
 
 .igx-chip__item {
   padding: 0;
+}
+
+.sc {
+  height: 100%;
+}
+
+.desc {
+  height: 40vh;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+}
+
+.card {
+  position: relative;
+  max-width: 420px;
+  overflow: hidden;
+  transition: all 0.8s;
+  text-overflow: ellipsis;
+}
+
+.rotate {
+  perspective: 100rem;
+}
+
+.back {
+  position: absolute;
+  top: -100%;
+  background: #fefefe;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+  transform: rotateY(180deg);
+  transition: top 0.4s, opacity 0.4s;
+}
+
+.back-content {
+  position: absolute;
+  // top: 10%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  padding: 5% 10% 10% 10%;
+  height: 10vh;
+}
+
+.rotate:hover .card {
+  transform: rotateY(180deg);
+}
+
+.rotate:hover .back {
+  opacity: 1;
+  top: 0;
+  user-select: auto;
+  pointer-events: auto;
 }

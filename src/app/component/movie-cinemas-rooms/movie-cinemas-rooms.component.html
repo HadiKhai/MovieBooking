@@ -1,0 +1,16 @@
+<div class="rooms">
+  <div class="room">
+    <div class="room-Branch">Rooms and Time</div>
+    <div class="room-section">
+      <ul>
+        <li class="room-section-detail" *ngFor="let room of rooms">
+          <a>
+            <p>Room {{ room.room_id }}</p>
+            <span>Start Time: {{ room.movieStartTime }} </span>
+            <span>End Time: {{ room.movieEndTime }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

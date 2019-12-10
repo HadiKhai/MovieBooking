@@ -14,6 +14,11 @@ export class RoomService {
   getRoom(id: number) {
     return this.http.get("server/admin/cinemas/" + id + "/rooms");
   }
+  getRoomByCinemaIdAndMovieId(movieId, cinemaId) {
+    return this.http.get(
+      "server/booking/movies/" + movieId + "/cinemas/" + cinemaId
+    );
+  }
   createRoom(room, cinemaId) {
     let body = JSON.stringify(room);
     return this.http.post(

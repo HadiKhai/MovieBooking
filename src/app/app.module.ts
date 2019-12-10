@@ -47,6 +47,8 @@ import { AdminMovieEventCinemasRoomsComponent } from "./component/admin-movie-ev
 import { AdminMovieEventCinemasRoomsMoviesComponent } from "./component/admin-movie-event-cinemas-rooms-movies/admin-movie-event-cinemas-rooms-movies.component";
 import { AdminMovieEventTimesComponent } from "./component/admin-movie-event-times/admin-movie-event-times.component";
 import { MovieCinemasComponent } from "./component/movie-cinemas/movie-cinemas.component";
+import { MovieCinemasRoomsComponent } from "./component/movie-cinemas-rooms/movie-cinemas-rooms.component";
+import { MovieCinemasRoomsSeatsComponent } from "./component/movie-cinemas-rooms-seats/movie-cinemas-rooms-seats.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +69,9 @@ import { MovieCinemasComponent } from "./component/movie-cinemas/movie-cinemas.c
     AdminMovieEventCinemasRoomsComponent,
     AdminMovieEventCinemasRoomsMoviesComponent,
     AdminMovieEventTimesComponent,
-    MovieCinemasComponent
+    MovieCinemasComponent,
+    MovieCinemasRoomsComponent,
+    MovieCinemasRoomsSeatsComponent
   ],
   imports: [
     BrowserModule,

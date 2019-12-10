@@ -1,10 +1,26 @@
 .navbar {
-  background: rgb(29, 30, 44);
+  height: 13vh;
+  transition: height 0.4s ease-out;
+  font-family: "Montserrat", sans-serif;
   background: linear-gradient(
     90deg,
-    rgba(29, 30, 44, 1) 0%,
-    rgb(42, 98, 143) 100%
+    rgba(3, 4, 12, 0.8) 0%,
+    rgba(8, 24, 37, 0.836) 100%
   );
+}
+.custom-navbar {
+  height: 6vh;
+  transition: height 0.4s ease-in;
+}
+
+.navbar-c {
+  height: 50vh;
+  background: linear-gradient(
+    90deg,
+    rgba(3, 4, 12, 0.8) 0%,
+    rgba(8, 24, 37, 0.836) 100%
+  );
+  transition: height 0.2s ease-out;
 }
 .navbar .navbar-brand {
   color: #ecf0f1;
@@ -42,15 +58,17 @@
 .navbar .navbar-nav .nav-item.show .nav-link,
 .navbar .navbar-nav .nav-item.show .nav-link:hover,
 .navbar .navbar-nav .nav-item.show .nav-link:focus {
-  color: #ffffff;
-  background-color: #2a628f;
+  color: #2a628f;
+  text-shadow: 2px 2px 5px #2a628f;
 }
 .navbar .navbar-toggle {
-  border-color: #2a628f;
+  color: #2a628f;
+  text-shadow: 2px 2px 5px #2a628f;
 }
 .navbar .navbar-toggle:hover,
 .navbar .navbar-toggle:focus {
-  background-color: #2a628f;
+  color: #2a628f;
+  text-shadow: 2px 2px 5px #2a628f;
 }
 .navbar .navbar-toggle .navbar-toggler-icon {
   color: #ecf0f1;
@@ -136,4 +154,59 @@
 .butn {
   background-color: #1d1e2c;
   color: white;
+}
+
+.header {
+  position: fixed;
+  z-index: 999;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item :hover {
+  color: #2a628f;
+  text-shadow: 2px 2px 5px #2a628f;
+}
+
+.nav-link :hover {
+  color: #2a628f;
+  text-shadow: 2px 2px 5px #2a628f;
+}
+
+.navbar-form :hover {
+  color: #2a628f;
+  text-shadow: 2px 2px 5px #2a628f;
+}
+
+.navbar-text :hover {
+  color: #2a628f;
+  text-shadow: 2px 2px 5px #2a628f;
+}
+
+.search {
+  background: transparent;
+  border-color: transparent;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0;
+  transition: all 0.8s;
+}
+
+.search:focus {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: #fff;
+  border-bottom: 2px solid #2a628f;
+}
+
+.logo {
+  height: 30px;
+  width: 30px;
+  filter: invert(100%);
+  position: relative;
+  transform: translateY(-5px);
+}
+.span-logo {
+  height: 4vh;
+  width: 4vw;
 }

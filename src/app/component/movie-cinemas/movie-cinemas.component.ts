@@ -10,6 +10,8 @@ import { ActivatedRoute } from "@angular/router";
 export class MovieCinemasComponent implements OnInit {
   cinemas;
   id;
+  cinemaId;
+  toggle = true;
   constructor(
     private cinemaService: CinemaService,
     private route: ActivatedRoute
@@ -27,5 +29,11 @@ export class MovieCinemasComponent implements OnInit {
       err => console.error(err),
       () => console.log("Cinema Loaded")
     );
+  }
+  toggleComponent() {
+    this.toggle = !this.toggle;
+  }
+  cinemaSave(id) {
+    this.cinemaId = id;
   }
 }

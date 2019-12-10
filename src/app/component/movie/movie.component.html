@@ -1,4 +1,4 @@
-<div class="main" *ngIf="movie">
+<div class="main  movies" *ngIf="movie">
   <div
     class="movie-backdrop"
     [ngStyle]="{ 'background-image': 'url(' + movie.movieUrlPosterImage + ')' }"
@@ -14,7 +14,7 @@
           />
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-8 ">
         <h2 class="movie-title">{{ movie.movieName }}</h2>
         <div class="movie-info">
           <p class="movie-overview">{{ movie.movieDescription }}</p>
