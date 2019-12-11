@@ -50,6 +50,8 @@ import { MovieCinemasComponent } from "./component/movie-cinemas/movie-cinemas.c
 import { MovieCinemasRoomsComponent } from "./component/movie-cinemas-rooms/movie-cinemas-rooms.component";
 import { MovieCinemasRoomsSeatsComponent } from "./component/movie-cinemas-rooms-seats/movie-cinemas-rooms-seats.component";
 import { CinemaResolverService } from "./services/Cinema-resolver/cinema-resolver.service";
+import { SeatsResolverService } from "./services/Seats-Resolver/seats-resolver.service";
+import { SeatService } from "./services/Seats/seat.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,7 +106,9 @@ import { CinemaResolverService } from "./services/Cinema-resolver/cinema-resolve
     StaffService,
     RoomService,
     MovieResolverService,
-    CinemaResolverService
+    CinemaResolverService,
+    SeatService,
+    SeatsResolverService
   ],
   bootstrap: [AppComponent]
 })

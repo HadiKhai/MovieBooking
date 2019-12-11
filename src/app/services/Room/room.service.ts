@@ -10,7 +10,13 @@ const httpOptions = {
 })
 export class RoomService {
   constructor(private http: HttpClient) {}
-
+  cinemaId;
+  saveCinemaId(cinemaId) {
+    this.cinemaId = cinemaId;
+  }
+  getCinemaId() {
+    return this.cinemaId;
+  }
   getRoom(id: number) {
     return this.http.get("server/admin/cinemas/" + id + "/rooms");
   }

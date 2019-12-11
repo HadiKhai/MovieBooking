@@ -2,9 +2,14 @@
   <div class="room">
     <div class="room-Branch">Rooms and Time</div>
     <div class="room-section">
-      <ul>
-        <li class="room-section-detail" *ngFor="let room of rooms">
-          <a>
+      <ul *ngFor="let room of rooms">
+        <li class="room-section-detail">
+          <a
+            routerLink="/movies/{{ movieId }}/cinemas/{{ cinemaId }}/rooms/{{
+              room.room_id
+            }}/seats"
+            class="link"
+          >
             <p>Room {{ room.room_id }}</p>
             <span>Start Time: {{ room.movieStartTime }} </span>
             <span>End Time: {{ room.movieEndTime }}</span>

@@ -10,22 +10,22 @@ import { ActivatedRoute } from "@angular/router";
 export class MovieCinemasRoomsComponent implements OnInit {
   @Input() cinemaId;
   rooms;
-  id;
+  movieId;
   constructor(
     private roomService: RoomService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.id = this.route.snapshot.params.id;
-    this.getRooms(this.id, this.cinemaId);
+    this.movieId = this.route.snapshot.params.id;
+    this.getRooms(this.movieId, this.cinemaId);
     console.log(this.cinemaId);
   }
   ngOnChanges() {
     console.log(this.cinemaId);
-    this.id = this.route.snapshot.params.id;
+    this.movieId = this.route.snapshot.params.id;
 
-    this.getRooms(this.id, this.cinemaId);
+    this.getRooms(this.movieId, this.cinemaId);
   }
   getRooms(movieId, cinemaId) {
     this.roomService.getRoomByCinemaIdAndMovieId(movieId, cinemaId).subscribe(

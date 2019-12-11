@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { CinemaService } from "src/app/services/Cinema/cinema.service";
 import { ActivatedRoute } from "@angular/router";
+import { RoomService } from "src/app/services/Room/room.service";
 
 @Component({
   selector: "app-movie-cinemas",
@@ -9,23 +10,25 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class MovieCinemasComponent implements OnInit {
   cinemas;
-  id;
+  movieId;
   cinemaId;
   toggle = true;
   cinemasArray: any[];
   cinemasBooleanArrays = [];
   constructor(
     private cinemaService: CinemaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private roomService: RoomService
   ) {}
 
   ngOnInit() {
-    this.id = this.route.snapshot.params.id;
+    this.movieId = this.route.snapshot.params.id;
     this.route.data.subscribe(
       (data: { cinema: any }) => (this.cinemas = data.cinema)
     );
     this.cinemasArray = Array.of(this.cinemas);
     this.cinemasArray = this.cinemasArray[0];
+    this.cinemaId = this.cinemasArray[0].cinemaId;
     const size = this.cinemasArray.length;
     console.log(this.cinemasArray);
     for (let i = 0; i < size; i++) {
@@ -79,5 +82,6 @@ export class MovieCinemasComponent implements OnInit {
   }
   cinemaSave(id) {
     this.cinemaId = id;
+    this.roomService.saveCinemaId(id);
   }
 }
