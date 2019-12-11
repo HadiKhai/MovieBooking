@@ -16,13 +16,18 @@ import { AdminMovieEventCinemasComponent } from "./component/admin-movie-event-c
 import { AdminMovieEventCinemasRoomsComponent } from "./component/admin-movie-event-cinemas-rooms/admin-movie-event-cinemas-rooms.component";
 import { AdminMovieEventCinemasRoomsMoviesComponent } from "./component/admin-movie-event-cinemas-rooms-movies/admin-movie-event-cinemas-rooms-movies.component";
 import { AdminMovieEventTimesComponent } from "./component/admin-movie-event-times/admin-movie-event-times.component";
+import { CinemaResolverService } from "./services/Cinema-resolver/cinema-resolver.service";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "home", component: HomeComponent, data: { state: "home" } },
   { path: "movies", component: MoviesComponent, data: { state: "movies" } },
 
-  { path: "movies/:id", component: MovieComponent },
+  {
+    path: "movies/:id",
+    component: MovieComponent,
+    resolve: { cinema: CinemaResolverService }
+  },
   { path: "admin", component: AdminComponent, data: { state: "admin" } },
   { path: "admin/movie", component: AdminMovieComponent },
   {

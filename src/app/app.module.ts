@@ -49,6 +49,7 @@ import { AdminMovieEventTimesComponent } from "./component/admin-movie-event-tim
 import { MovieCinemasComponent } from "./component/movie-cinemas/movie-cinemas.component";
 import { MovieCinemasRoomsComponent } from "./component/movie-cinemas-rooms/movie-cinemas-rooms.component";
 import { MovieCinemasRoomsSeatsComponent } from "./component/movie-cinemas-rooms-seats/movie-cinemas-rooms-seats.component";
+import { CinemaResolverService } from "./services/Cinema-resolver/cinema-resolver.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +103,8 @@ import { MovieCinemasRoomsSeatsComponent } from "./component/movie-cinemas-rooms
     CinemaService,
     StaffService,
     RoomService,
-    MovieResolverService
+    MovieResolverService,
+    CinemaResolverService
   ],
   bootstrap: [AppComponent]
 })

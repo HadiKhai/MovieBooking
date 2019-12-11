@@ -19,6 +19,13 @@ export class MovieCinemasRoomsComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
     this.getRooms(this.id, this.cinemaId);
+    console.log(this.cinemaId);
+  }
+  ngOnChanges() {
+    console.log(this.cinemaId);
+    this.id = this.route.snapshot.params.id;
+
+    this.getRooms(this.id, this.cinemaId);
   }
   getRooms(movieId, cinemaId) {
     this.roomService.getRoomByCinemaIdAndMovieId(movieId, cinemaId).subscribe(

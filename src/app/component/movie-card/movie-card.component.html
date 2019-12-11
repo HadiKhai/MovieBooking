@@ -7,7 +7,7 @@
       <section class="card sample-content sc">
         <article class="sample-column card-wrapper sc">
           <igx-card class="sc">
-            <igx-card-media height="60vh">
+            <igx-card-media height="80vh">
               <img src="{{ movie.movieUrlImage }}" />
             </igx-card-media>
 
@@ -15,33 +15,30 @@
               <h3 class="title" igxCardHeaderTitle>{{ movie.movieName }}</h3>
               <h5 igxCardHeaderSubtitle>{{ movie.movieGenre }}</h5>
             </igx-card-header>
-            <div class="back">
-              <div class="back-content">
-                <igx-card-header>
+            <div class="back container-fluid">
+              <div class="back-content row">
+                <div class="col-12" height="20%">
                   <h3 class="title" igxCardHeaderTitle>
                     {{ movie.movieName }}
                   </h3>
                   <h5 igxCardHeaderSubtitle>{{ movie.movieGenre }}</h5>
-                </igx-card-header>
-                <div class="desc overflow-hidden">
-                  <igx-card-content>
-                    <p name="description">{{ movie.movieDescription }}</p>
-
-                    <igx-divider class="content-divider"></igx-divider>
-                  </igx-card-content>
                 </div>
-
-                <igx-card-actions>
-                  <button
-                    igxButton
-                    igx
-                    Ripple
-                    class="butn"
-                    routerLink="/movies/{{ movie.movieId }}"
-                  >
-                    Reserve
-                  </button>
-                </igx-card-actions>
+                <div class="desc overflow-hidden col-12" height="70%">
+                  <p name="description">{{ movie.movieDescription }}</p>
+                </div>
+                <div class="col-12" height="10%">
+                  <igx-card-actions>
+                    <button
+                      igxButton
+                      igx
+                      Ripple
+                      class="butn"
+                      routerLink="/movies/{{ movie.movieId }}"
+                    >
+                      Reserve
+                    </button>
+                  </igx-card-actions>
+                </div>
               </div>
             </div>
           </igx-card>
