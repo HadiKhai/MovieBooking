@@ -1,3 +1,12 @@
-.chair {
-  color: red;
+.seats {
+  padding: 5px;
+  height: 8vh;
+  width: 100vw;
+}
+
+.image {
+  content: url("/assets/img/seat.png");
+}
+.reservedimage {
+  content: url("/assets/img/reservedseat.png");
 }

@@ -7,11 +7,14 @@
             <h6>Select Seats</h6>
             <table>
               <tr *ngFor="let seats of seatsArraySorted">
-                <td *ngFor="let seat of seats">
+                <td *ngFor="let seat of seats" class="seats">
                   <img
-                    class="chair"
-                    src="https://image.flaticon.com/icons/png/512/24/24868.png"
-                    (click)="printSeatId(seat.seatId)"
+                    class="image"
+                    (click)="saveSeatId(seat.seatId)"
+                    (click)="toggleComponent(seat.seatId)"
+                    [ngClass]="{
+                      reservedimage: toggleC(seat.seatId)
+                    }"
                   />
                 </td>
               </tr>
