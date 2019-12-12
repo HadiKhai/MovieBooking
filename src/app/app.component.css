@@ -9,7 +9,7 @@
   );
 }
 .custom-navbar {
-  height: 9vh;
+  height: 7vh;
   transition: height 0.4s ease-in;
 }
 

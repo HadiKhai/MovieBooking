@@ -2,7 +2,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
 import { HomeComponent } from "./component/home/home.component";
 import { MovieComponent } from "./component/movie/movie.component";
 import { MoviesComponent } from "./component/movies/movies.component";
@@ -53,6 +52,7 @@ import { CinemaResolverService } from "./services/Cinema-resolver/cinema-resolve
 import { SeatsResolverService } from "./services/Seats-Resolver/seats-resolver.service";
 import { SeatService } from "./services/Seats/seat.service";
 import { RoomResolverService } from "./services/Room-resolver/room-resolver.service";
+import { AppComponent } from "./app.component";
 @NgModule({
   declarations: [
     AppComponent,
