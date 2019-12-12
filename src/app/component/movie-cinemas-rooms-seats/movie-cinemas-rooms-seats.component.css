@@ -9,6 +9,10 @@
   max-width: 99999px;
   content: url("/assets/img/seat.png");
 }
-.reservedimage {
+.nowbooking {
+  content: url("/assets/img/nowbookingseat.png");
+}
+
+.reserved {
   content: url("/assets/img/reservedseat.png");
 }

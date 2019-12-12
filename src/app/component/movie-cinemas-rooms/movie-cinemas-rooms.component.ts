@@ -35,5 +35,6 @@ export class MovieCinemasRoomsComponent implements OnInit {
       err => console.error(err),
       () => console.log("Cinema Loaded")
     );
+    console.log(this.rooms);
   }
 }

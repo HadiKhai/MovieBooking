@@ -134,10 +134,10 @@
                               <label>Gender</label>
                               <div class="btn-group btn-group-toggle ml-4" ngbRadioGroup name="radioBasic"
                                 [(ngModel)]="model">
-                                <label ngbButtonLabel class="btn but">
+                                <label ngbButtonLabel class="btn but butlink">
                                   <input ngbButton type="radio" value="middle"> Male
                                 </label>
-                                <label ngbButtonLabel class="btn but">
+                                <label ngbButtonLabel class="btn but butlink">
                                   <input ngbButton type="radio" [value]="false"> Female
                                 </label>
                               </div>

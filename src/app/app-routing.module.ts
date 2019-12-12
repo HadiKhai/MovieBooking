@@ -32,7 +32,7 @@ const routes: Routes = [
     resolve: { cinema: CinemaResolverService }
   },
   {
-    path: "movies/:id/cinemas/:id2/rooms/:id3/seats",
+    path: "movies/:id/cinemas/:id2/rooms/:id3/movie_event/:id4/seats",
     component: MovieCinemasRoomsSeatsComponent,
     resolve: { seats: SeatsResolverService }
   },

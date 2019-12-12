@@ -20,7 +20,9 @@ export class SeatsResolverService implements Resolve<any> {
     const id = route.params.id;
     const id2 = route.params.id2;
     const id3 = route.params.id3;
-    return this.seatsService.getSeats(id2, id3);
+    const id4 = route.params.id4;
+
+    return this.seatsService.getSeatsByMovieEvent(id, id2, id3, id4);
   }
 
   constructor(private seatsService: SeatService) {}

@@ -16,6 +16,7 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
   seatsArraySorted: any[][];
   imgSrc: string = "../assets/img/seat.png";
   seatId;
+  movie_event;
   seatsBooleanArray = [];
   constructor(
     private seatService: SeatService,
@@ -26,6 +27,7 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
     this.movieId = this.route.snapshot.params.id;
     this.cinemaId = this.route.snapshot.params.id2;
     this.roomId = this.route.snapshot.params.id3;
+    this.movie_event = this.route.snapshot.params.id4;
     this.route.data.subscribe(
       (data: { seats: any }) => (this.seats = data.seats)
     );
@@ -35,6 +37,7 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
     this.seatsArray = Array.of(this.seats);
     this.seatsArray = this.seatsArray[0];
     this.seatsArraySorted = [];
+    console.log(this.seatsArraySorted);
     const size = this.seats.length;
     if (size === 100) {
       for (let i = 0; i < 10; i++) {
@@ -66,20 +69,22 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
       this.seatsBooleanArray.push(false);
     }
   }
-  toggleComponent(id) {
-    let index;
-    for (let i = 0; i < this.seatsArray.length; i++) {
-      if (id === this.seatsArray[i].seatId) {
-        index = i;
+  toggleComponent(id, seatStatus) {
+    if (!seatStatus) {
+      let index;
+      for (let i = 0; i < this.seatsArray.length; i++) {
+        if (id === this.seatsArray[i].seatId) {
+          index = i;
+        }
       }
-    }
-    if (this.seatsBooleanArray[index] === true) {
-      this.seatsBooleanArray[index] = false;
-    } else {
-      for (let i = 0; i < this.seatsBooleanArray.length; i++) {
-        this.seatsBooleanArray[i] = false;
+      if (this.seatsBooleanArray[index] === true) {
+        this.seatsBooleanArray[index] = false;
+      } else {
+        for (let i = 0; i < this.seatsBooleanArray.length; i++) {
+          this.seatsBooleanArray[i] = false;
+        }
+        this.seatsBooleanArray[index] = true;
       }
-      this.seatsBooleanArray[index] = true;
     }
   }
   toggleC(seatId) {
@@ -91,8 +96,10 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
     }
     return this.seatsBooleanArray[index];
   }
-  saveSeatId(seatId) {
-    this.seatId = seatId;
-    console.log(this.seatId);
+  saveSeatId(seatId, seatStatus) {
+    if (!seatStatus) {
+      this.seatId = seatId;
+      console.log(this.seatId);
+    }
   }
 }

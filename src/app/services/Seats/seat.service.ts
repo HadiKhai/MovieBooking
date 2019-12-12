@@ -16,6 +16,18 @@ export class SeatService {
       "server/cinemas/" + cinemaId + "/rooms/" + roomId + "/seats"
     );
   }
+  getSeatsByMovieEvent(movieId, cinemaId, roomId, movieEvent) {
+    return this.http.get(
+      "server/booking/movies/" +
+        movieId +
+        "/cinemas/" +
+        cinemaId +
+        "/movieEvents/" +
+        movieEvent +
+        "/rooms/" +
+        roomId
+    );
+  }
   generateSeats(cinemaId, roomId, roomCapacity) {
     return this.http.post(
       "server/admin/cinemas/" +

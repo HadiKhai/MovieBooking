@@ -9,7 +9,7 @@
   );
 }
 .custom-navbar {
-  height: 6vh;
+  height: 9vh;
   transition: height 0.4s ease-in;
 }
 
@@ -221,7 +221,7 @@
 .error {
   color: tomato;
   font-size: 12px;
-  padding-top: 4px
+  padding-top: 4px;
 }
 
 .login-but {
@@ -254,10 +254,6 @@
 }
 
 .mod {
-  background-color: #2a628f94;
-}
-
-.mod {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -271,5 +267,46 @@
 }
 
 label {
+  color: white;
+}
+
+.but {
+  border-color: rgba(4, 12, 32, 0.699);
+  font-family: "Montserrat", sans-serif;
+  color: rgb(4, 12, 32);
+}
+
+.but:hover {
+  background-color: rgba(4, 12, 32, 0.699);
+  border-color: rgba(4, 12, 32, 0.699);
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+.active:focus {
+  background-color: rgba(4, 12, 32, 0.699);
+  border-color: rgba(4, 12, 32, 0.699);
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  box-shadow: transparent !important;
+}
+
+.active {
+  border-color: rgba(4, 12, 32, 0.699) !important;
+
+  color: white;
+  box-shadow: transparent !important;
+}
+.butlink {
+  border-color: rgba(4, 12, 32, 0.699) !important;
+  color: white;
+  box-shadow: transparent !important;
+}
+.canc {
+  font-family: "Montserrat", sans-serif;
+}
+
+.tab {
+  background: transparent;
   color: white;
 }

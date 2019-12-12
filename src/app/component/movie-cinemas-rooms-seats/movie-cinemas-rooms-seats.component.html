@@ -10,10 +10,11 @@
                 <td *ngFor="let seat of seats" class="seats">
                   <img
                     class="image"
-                    (click)="saveSeatId(seat.seatId)"
-                    (click)="toggleComponent(seat.seatId)"
+                    (click)="saveSeatId(seat.seatId, seat.seatStatus)"
+                    (click)="toggleComponent(seat.seatId, seat.seatStatus)"
                     [ngClass]="{
-                      reservedimage: toggleC(seat.seatId)
+                      nowbooking: toggleC(seat.seatId),
+                      reserved: seat.seatStatus
                     }"
                   />
                 </td>
