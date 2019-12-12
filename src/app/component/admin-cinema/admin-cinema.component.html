@@ -1,22 +1,30 @@
 <div class="container-fluid cnt">
-  <div
-    class="btn-group btn-group-lg"
-    role="group"
-    aria-label="Large button group"
-  >
-    <button type="button" class="but btn" routerLink="/admin/movie">
-      Movie
-    </button>
-    <button type="button" class="but btn active" routerLink="/admin/cinema">
-      Cinema
-    </button>
-    <button type="button" class="but btn" routerLink="/admin/showing/cinemas">
-      Movie event
-    </button>
+  <div class="row justify-content-between" width="100%">
+    <div
+      class="btn-group btn-group-lg col-3"
+      role="group"
+      aria-label="Large button group"
+    >
+      <button type="button" class="but btn" routerLink="/admin/movie">
+        Movie
+      </button>
+      <button type="button" class="but btn active" routerLink="/admin/cinema">
+        Cinema
+      </button>
+      <button type="button" class="but btn" routerLink="/admin/showing/cinemas">
+        Movie event
+      </button>
+    </div>
+    <div class="col-1">
+      <div
+        class="cursor"
+        (click)="toggleDisplay()"
+        style=" font-size: 3em; color: white; margin-right: 2vw;"
+      >
+        <i class="fas fa-plus"></i>
+      </div>
+    </div>
   </div>
-  <button type="button" class="but btn btn-secondary" (click)="toggleDisplay()">
-    Add
-  </button>
 
   <div *ngIf="isShow">
     <section>
@@ -130,60 +138,66 @@
   </div>
 
   <div class="container" *ngIf="!isShow">
-    <form [formGroup]="cinemaForm" (ngSubmit)="submitRegistration()" novalidate>
-      <div *ngIf="validMessage != ''">
-        <h3 class="has-info">{{ validMessage }}</h3>
-      </div>
-      <div class="form-group">
-        <label>Cinema Name</label>
-        <input
-          type="text"
-          class="form-control"
-          formControlName="cinemaName"
-          required
-          autofocus
-        />
-      </div>
-      <div class="form-group">
-        <label>Cinema Address</label>
-        <input
-          type="email"
-          class="form-control"
-          formControlName="cinemaAddress"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label>Cinema Manager</label>
-        <input
-          type="text"
-          class="form-control"
-          formControlName="cinemaManager"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label>Cinema Phone</label>
-        <input
-          type="text"
-          class="form-control"
-          formControlName="cinemaPhone"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label>Seat Capacity</label>
-        <input
-          type="text"
-          class="form-control"
-          formControlName="cinemaSeatCapacity"
-          required
-        />
-      </div>
+    <section>
+      <form
+        [formGroup]="cinemaForm"
+        (ngSubmit)="submitRegistration()"
+        novalidate
+      >
+        <div *ngIf="validMessage != ''">
+          <h3 class="has-info">{{ validMessage }}</h3>
+        </div>
+        <div class="form-group">
+          <label>Cinema Name</label>
+          <input
+            type="text"
+            class="form-control inp"
+            formControlName="cinemaName"
+            required
+            autofocus
+          />
+        </div>
+        <div class="form-group">
+          <label>Cinema Address</label>
+          <input
+            type="email"
+            class="form-control inp"
+            formControlName="cinemaAddress"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Cinema Manager</label>
+          <input
+            type="text"
+            class="form-control inp"
+            formControlName="cinemaManager"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Cinema Phone</label>
+          <input
+            type="text"
+            class="form-control inp"
+            formControlName="cinemaPhone"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Seat Capacity</label>
+          <input
+            type="text"
+            class="form-control inp"
+            formControlName="cinemaSeatCapacity"
+            required
+          />
+        </div>
 
-      <button type="submit" class="btn btn-primary">
-        Submit
-      </button>
-    </form>
+        <button type="submit" class="btn but">
+          Submit
+        </button>
+      </form>
+    </section>
   </div>
 </div>

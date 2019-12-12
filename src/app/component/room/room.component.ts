@@ -61,7 +61,7 @@ export class RoomComponent implements OnInit {
     console.log(this.roomBooleanArrays);
     this.roomForm = new FormGroup({
       roomCapacity: new FormControl("", Validators.required),
-      roomStatus: new FormControl("", Validators.required),
+      roomStatus: new FormControl("true", Validators.required),
       roomType: new FormControl("", Validators.required)
     });
   }
@@ -144,8 +144,8 @@ export class RoomComponent implements OnInit {
     }
   }
 
-  generateSeats(cinemaId, roomId, roomCapacity) {
-    if (!this.toggleC(roomId)) {
+  generateSeats(cinemaId, roomId, roomCapacity, roomStatus) {
+    if (roomStatus) {
       this.seatService.generateSeats(cinemaId, roomId, roomCapacity).subscribe(
         () => {
           return true;
@@ -153,14 +153,18 @@ export class RoomComponent implements OnInit {
         error => console.log(error),
         () => console.log("data loaded")
       );
+      this.router.navigateByUrl("/admin/cinemas/" + this.id + "/rooms");
     }
-  }
-  deleteSeats(cinemaId, roomId, roomCapacity) {
-    this.seatService
-      .deleteSeats(cinemaId, roomId, roomCapacity)
-      .subscribe(data => {
-        console.log("success");
-      });
     this.router.navigateByUrl("/admin/cinemas/" + this.id + "/rooms");
+  }
+  deleteSeats(cinemaId, roomId, roomCapacity, roomStatus) {
+    if (!roomStatus) {
+      this.seatService
+        .deleteSeats(cinemaId, roomId, roomCapacity)
+        .subscribe(data => {
+          console.log("success");
+        });
+      this.router.navigateByUrl("/admin/cinemas/" + this.id + "/rooms");
+    }
   }
 }

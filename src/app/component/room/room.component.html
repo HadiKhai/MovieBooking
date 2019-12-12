@@ -50,7 +50,14 @@
             <td>
               <div
                 class="btn btn-danger "
-                (click)="generateSeats(id, room.roomId, room.roomCapacity)"
+                (click)="
+                  generateSeats(
+                    id,
+                    room.roomId,
+                    room.roomCapacity,
+                    room.roomStatus
+                  )
+                "
                 [ngClass]="{
                   disabled: !room.roomStatus
                 }"
@@ -61,7 +68,17 @@
             <td>
               <div
                 class="btn btn-danger "
-                (click)="deleteSeats(id, room.roomId, room.roomCapacity)"
+                (click)="
+                  deleteSeats(
+                    id,
+                    room.roomId,
+                    room.roomCapacity,
+                    room.roomStatus
+                  )
+                "
+                [ngClass]="{
+                  disabled: room.roomStatus
+                }"
               >
                 Delete seats
               </div>
@@ -127,15 +144,6 @@
           type="email"
           class="inp form-control"
           formControlName="roomCapacity"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label>Room Status</label>
-        <input
-          type="text"
-          class="inp form-control"
-          formControlName="roomStatus"
           required
         />
       </div>
