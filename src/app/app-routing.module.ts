@@ -19,6 +19,7 @@ import { AdminMovieEventTimesComponent } from "./component/admin-movie-event-tim
 import { CinemaResolverService } from "./services/Cinema-resolver/cinema-resolver.service";
 import { MovieCinemasRoomsSeatsComponent } from "./component/movie-cinemas-rooms-seats/movie-cinemas-rooms-seats.component";
 import { SeatsResolverService } from "./services/Seats-Resolver/seats-resolver.service";
+import { RoomResolverService } from "./services/Room-resolver/room-resolver.service";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -46,7 +47,11 @@ const routes: Routes = [
   { path: "admin/cinema", component: AdminCinemaComponent },
   { path: "admin/cinema", component: AdminCinemaComponent },
   { path: "admin/cinemas/:id/staffs", component: StaffComponent },
-  { path: "admin/cinemas/:id/rooms", component: RoomComponent },
+  {
+    path: "admin/cinemas/:id/rooms",
+    component: RoomComponent,
+    resolve: { rooms: RoomResolverService }
+  },
   { path: "admin/showing/cinemas", component: AdminMovieEventComponent },
   {
     path: "admin/showing/cinemas/:id/rooms",

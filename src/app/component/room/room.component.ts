@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Observable } from "rxjs";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { RoomService } from "src/app/services/Room/room.service";
+import { SeatService } from "src/app/services/Seats/seat.service";
+import { ifStmt } from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: "app-room",
@@ -17,8 +19,12 @@ export class RoomComponent implements OnInit {
   id;
   validMessage: string = "";
   mySubscription: any;
+  disable = true;
+  roomArray: any[];
+  roomBooleanArrays = [];
   constructor(
     private roomservice: RoomService,
+    private seatService: SeatService,
     private modalService: NgbModal,
     private route: ActivatedRoute,
     private router: Router
@@ -42,17 +48,41 @@ export class RoomComponent implements OnInit {
     this.isShow = !this.isShow;
   }
   ngOnInit() {
+    this.route.data.subscribe(
+      (data: { rooms: any }) => (this.rooms = data.rooms)
+    );
     this.id = this.route.snapshot.params.id;
-    console.log(this.id);
-    this.getrooms(this.id);
-    console.dir(this.rooms);
+    this.roomArray = Array.of(this.rooms);
+    this.roomArray = this.roomArray[0];
+    const size = this.roomArray.length;
+    for (let i = 0; i < size; i++) {
+      this.roomBooleanArrays.push(false);
+    }
+    console.log(this.roomBooleanArrays);
     this.roomForm = new FormGroup({
       roomCapacity: new FormControl("", Validators.required),
       roomStatus: new FormControl("", Validators.required),
       roomType: new FormControl("", Validators.required)
     });
   }
-
+  toggleComponent(id) {
+    let index;
+    for (let i = 0; i < this.roomArray.length; i++) {
+      if (id === this.roomArray[i].roomId) {
+        index = i;
+      }
+    }
+    this.roomBooleanArrays[index] = true;
+  }
+  toggleC(id) {
+    let index;
+    for (let i = 0; i < this.roomArray.length; i++) {
+      if (id === this.roomArray[i].roomId) {
+        index = i;
+      }
+    }
+    return this.roomBooleanArrays[index];
+  }
   submitRegistration() {
     if (this.roomForm.valid) {
       this.validMessage = "Your room has been added!";
@@ -88,6 +118,7 @@ export class RoomComponent implements OnInit {
       () => console.log("data loaded")
     );
   }
+
   closeResult: string;
 
   open(content) {
@@ -111,5 +142,25 @@ export class RoomComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  generateSeats(cinemaId, roomId, roomCapacity) {
+    if (!this.toggleC(roomId)) {
+      this.seatService.generateSeats(cinemaId, roomId, roomCapacity).subscribe(
+        () => {
+          return true;
+        },
+        error => console.log(error),
+        () => console.log("data loaded")
+      );
+    }
+  }
+  deleteSeats(cinemaId, roomId, roomCapacity) {
+    this.seatService
+      .deleteSeats(cinemaId, roomId, roomCapacity)
+      .subscribe(data => {
+        console.log("success");
+      });
+    this.router.navigateByUrl("/admin/cinemas/" + this.id + "/rooms");
   }
 }

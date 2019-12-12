@@ -1,160 +1,157 @@
-<div class="container cnt">
+<div class="container-fluid cnt">
   <span
     class="cursor"
     routerLink="/admin/cinema"
-    style="font-size: 3em; color: #04628f;"
+    style="font-size: 3em; color: white; margin-right: 2vw;"
   >
     <i class="fas fa-arrow-circle-left"></i>
   </span>
-  <button type="button" class="btn btn-secondary" (click)="toggleDisplay()">
-    Add
-  </button>
-</div>
-<div *ngIf="isShow">
-  <div class="container">
-    <table class="table table-bordered table-inverse">
-      <tr>
-        <th>Cinema ID</th>
-        <th>Room Id</th>
-        <th>Room Capacity</th>
-        <th>Room Status</th>
-        <th>Room Type</th>
-        <th>Delete</th>
-      </tr>
-      <tr *ngFor="let room of rooms">
-        <td>
-          {{ room.cinemaId }}
-        </td>
-        <td>
-          {{ room.roomId }}
-        </td>
-        <td>
-          {{ room.roomCapacity }}
-        </td>
-        <td>
-          {{ room.roomStatus }}
-        </td>
-        <td>
-          {{ room.roomType }}
-        </td>
-        <td>
-          <span
-            class="cursor"
-            (click)="open(confirm)"
-            style="font-size: 3em; color: rgb(245, 19, 19);"
-          >
-            <i class="fas fa-trash"></i>
-          </span>
-        </td>
-        <ng-template #confirm let-modal>
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-title">Movie Deletion</h4>
-            <button
-              type="button"
-              class="close"
-              aria-describedby="modal-title"
-              (click)="modal.dismiss('Cross click')"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p><strong>Are you sure you want to delete movie? </strong></p>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              (click)="modal.dismiss('cancel click')"
-            >
-              Cancel
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="deleteRoom(room.roomId)"
-              (click)="modal.close('Ok click')"
-            >
-              Ok
-            </button>
-          </div>
-        </ng-template>
-        <ng-template #content let-modal>
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Image</h4>
-            <button
-              type="button"
-              class="close"
-              aria-label="Close"
-              (click)="modal.dismiss('Cross click')"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="img">
-              <img src="{{ movie.movieUrlImage }}" />
-            </div>
-          </div>
-        </ng-template>
-        <ng-template #content1 let-modal>
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title1">Image</h4>
-            <button
-              type="button"
-              class="close"
-              aria-label="Close"
-              (click)="modal.dismiss('Cross click')"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="img">
-              <img src="{{ movie.movieUrlPosterImage }}" />
-            </div>
-          </div>
-        </ng-template>
-      </tr>
-    </table>
+  <span
+    class="cursor"
+    (click)="toggleDisplay()"
+    style=" font-size: 3em; color: white; margin-right: 2vw;"
+  >
+    <i class="fas fa-plus"></i>
+  </span>
+
+  <div *ngIf="isShow">
+    <div class="container">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <th>Cinema ID</th>
+          <th>Room Id</th>
+          <th>Room Capacity</th>
+          <th>Room Status</th>
+          <th>Room Type</th>
+          <th>Generate Seats</th>
+          <th>Delete Seats</th>
+          <th>Delete Room</th>
+        </tr>
+      </table>
+
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr *ngFor="let room of rooms">
+            <td>
+              {{ room.cinemaId }}
+            </td>
+            <td>
+              {{ room.roomId }}
+            </td>
+            <td>
+              {{ room.roomCapacity }}
+            </td>
+            <td>
+              {{ room.roomStatus }}
+            </td>
+            <td>
+              {{ room.roomType }}
+            </td>
+            <td>
+              <div
+                class="btn btn-danger "
+                (click)="generateSeats(id, room.roomId, room.roomCapacity)"
+                [ngClass]="{
+                  disabled: !room.roomStatus
+                }"
+              >
+                Generate seats
+              </div>
+            </td>
+            <td>
+              <div
+                class="btn btn-danger "
+                (click)="deleteSeats(id, room.roomId, room.roomCapacity)"
+              >
+                Delete seats
+              </div>
+            </td>
+            <td>
+              <span
+                class="cursor"
+                (click)="open(confirm)"
+                style="font-size: 3em; color: rgb(245, 19, 19);"
+              >
+                <i class="fas fa-trash"></i>
+              </span>
+            </td>
+            <ng-template #confirm let-modal>
+              <div class="mod">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-title">Room Deletion</h4>
+                  <button
+                    type="button"
+                    class="close"
+                    aria-describedby="modal-title"
+                    (click)="modal.dismiss('Cross click')"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p><strong>Are you sure you want to delete room? </strong></p>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="modal.dismiss('cancel click')"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="deleteRoom(room.roomId)"
+                    (click)="modal.close('Ok click')"
+                  >
+                    Ok
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="container" *ngIf="!isShow">
-  <form [formGroup]="roomForm" (ngSubmit)="submitRegistration()" novalidate>
-    <div *ngIf="validMessage != ''">
-      <h3 class="has-info">{{ validMessage }}</h3>
-    </div>
-    <div class="form-group">
-      <label>Room Capacity</label>
-      <input
-        type="email"
-        class="form-control"
-        formControlName="roomCapacity"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label>Room Status</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="roomStatus"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label>Room Type</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="roomType"
-        required
-      />
-    </div>
+  <div class="container" *ngIf="!isShow">
+    <form [formGroup]="roomForm" (ngSubmit)="submitRegistration()" novalidate>
+      <div *ngIf="validMessage != ''">
+        <h3 class="has-info">{{ validMessage }}</h3>
+      </div>
+      <div class="form-group">
+        <label>Room Capacity</label>
+        <input
+          type="email"
+          class="inp form-control"
+          formControlName="roomCapacity"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Room Status</label>
+        <input
+          type="text"
+          class="inp form-control"
+          formControlName="roomStatus"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Room Type</label>
+        <input
+          type="text"
+          class="inp form-control"
+          formControlName="roomType"
+          required
+        />
+      </div>
 
-    <button type="submit" class="btn btn-primary">
-      Submit
-    </button>
-  </form>
+      <button type="submit" class="btn but">
+        Submit
+      </button>
+    </form>
+  </div>
 </div>

@@ -1,49 +1,49 @@
-<div class="container cnt">
-  <div
-    class="btn-group btn-group-lg"
-    role="group"
-    aria-label="Large button group"
-  >
-    <button type="button" class="btn btn-secondary" routerLink="/admin/movie">
+<div class="container-fluid cnt">
+  <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+    <button type="button" class="but btn" routerLink="/admin/movie">
       Movie
     </button>
-    <button type="button" class="btn btn-secondary" routerLink="/admin/cinema">
+    <button type="button" class="but btn " routerLink="/admin/cinema">
       Cinema
     </button>
-    <button
-      type="button"
-      class="btn btn-secondary active"
-      routerLink="/admin/showing/cinemas"
-    >
+    <button type="button" class="but btn active" routerLink="/admin/showing/cinemas">
       Movie event
     </button>
   </div>
-</div>
-<div>
+  
+
+<section>
   <div class="container">
-    <table class="table table-bordered table-inverse">
+    <table cellpadding="0" cellspacing="0" border="0">
       <tr>
         <th>Name</th>
         <th>Address</th>
         <th>Choose Room</th>
       </tr>
-      <tr *ngFor="let cinema of cinemas">
-        <td>
-          {{ cinema.cinemaName }}
-        </td>
-        <td>
-          {{ cinema.cinemaAddress }}
-        </td>
-        <td>
-          <span
-            class="cursor"
-            routerLink="/admin/showing/cinemas/{{ cinema.cinemaId }}/rooms"
-            style="font-size: 3em; color: #04628f;"
-          >
-            <i class="fas fa-person-booth"></i>
-          </span>
-        </td>
-      </tr>
+      
     </table>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+
+        <tr *ngFor="let cinema of cinemas">
+          <td>
+            {{ cinema.cinemaName }}
+          </td>
+          <td>
+            {{ cinema.cinemaAddress }}
+          </td>
+          <td>
+            <span class="cursor" routerLink="/admin/showing/cinemas/{{ cinema.cinemaId }}/rooms"
+              style="font-size: 3em; color: #04628f;">
+              <i class="fas fa-person-booth"></i>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+     
   </div>
+  </section>
+
+
 </div>

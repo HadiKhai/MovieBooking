@@ -1,10 +1,12 @@
 .seats {
-  padding: 5px;
-  height: 8vh;
-  width: 100vw;
+  padding-bottom: 3vh;
+  padding-right: 5vh;
 }
 
 .image {
+  height: 4vh;
+  width: 4vh;
+  max-width: 99999px;
   content: url("/assets/img/seat.png");
 }
 .reservedimage {

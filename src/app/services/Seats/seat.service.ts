@@ -1,5 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+
+const httpOptions = {
+  headers: new HttpHeaders({ "Content-Type": "application/json" })
+};
 
 @Injectable({
   providedIn: "root"
@@ -10,6 +14,23 @@ export class SeatService {
   getSeats(cinemaId, roomId) {
     return this.http.get(
       "server/cinemas/" + cinemaId + "/rooms/" + roomId + "/seats"
+    );
+  }
+  generateSeats(cinemaId, roomId, roomCapacity) {
+    return this.http.post(
+      "server/admin/cinemas/" +
+        cinemaId +
+        "/rooms/" +
+        roomId +
+        "/" +
+        roomCapacity +
+        "/seats",
+      httpOptions
+    );
+  }
+  deleteSeats(cinemaId, roomId, roomCapacity) {
+    return this.http.delete(
+      "server/admin/cinemas/" + cinemaId + "/rooms/" + roomId + "/seats"
     );
   }
 }

@@ -35,18 +35,36 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
     this.seatsArray = Array.of(this.seats);
     this.seatsArray = this.seatsArray[0];
     this.seatsArraySorted = [];
-    for (let i = 0; i < 10; i++) {
-      this.seatsArraySorted[i] = [];
-      if (this.seats.length === 100) {
+    const size = this.seats.length;
+    if (size === 100) {
+      for (let i = 0; i < 10; i++) {
+        this.seatsArraySorted[i] = [];
         for (let j = 0; j < 10; j++) {
           this.seatsArraySorted[i][j] = this.seatsArray[i * 10 + j];
         }
       }
     }
+    if (size === 50) {
+      for (let i = 0; i < 5; i++) {
+        this.seatsArraySorted[i] = [];
+        for (let j = 0; j < 10; j++) {
+          this.seatsArraySorted[i][j] = this.seatsArray[i * 10 + j];
+        }
+      }
+    }
+    console.log(this.seatsArray[101]);
+    if (size === 200) {
+      for (let i = 0; i < 10; i++) {
+        this.seatsArraySorted[i] = [];
+        for (let j = 0; j < 20; j++) {
+          this.seatsArraySorted[i][j] = this.seatsArray[i * 20 + j];
+        }
+      }
+    }
+    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.seatsArray.length; i++) {
       this.seatsBooleanArray.push(false);
     }
-    console.log(this.seatsArraySorted);
   }
   toggleComponent(id) {
     let index;

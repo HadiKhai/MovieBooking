@@ -70,6 +70,7 @@ export class AdminMovieEditComponent implements OnInit {
     this.route.data.subscribe(
       (data: { movie: any }) => (this.movie = data.movie)
     );
+
     console.dir(this.id);
     this.movieForm = new FormGroup({
       movieName: new FormControl(this.movie.movieName, Validators.required),

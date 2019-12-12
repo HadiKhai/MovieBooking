@@ -1,183 +1,163 @@
-<div class="container cnt">
+<div class="container-fluid cnt">
   <span
     class="cursor"
     routerLink="/admin/cinema"
-    style="font-size: 3em; color: #04628f;"
+    style="font-size: 3em; color: white; margin-right: 2vw;"
   >
     <i class="fas fa-arrow-circle-left"></i>
   </span>
-  <button type="button" class="btn btn-secondary" (click)="toggleDisplay()">
-    Add
-  </button>
-</div>
-<div *ngIf="isShow">
-  <div class="container">
-    <table class="table table-bordered table-inverse">
-      <tr>
-        <th>Staff ID</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Phone</th>
-        <th>Address</th>
-        <th>Role</th>
-        <th>Delete</th>
-      </tr>
-      <tr *ngFor="let staff of staffs">
-        <td>
-          {{ staff.staffId }}
-        </td>
-        <td>
-          {{ staff.staffFirstName }}
-        </td>
-        <td>
-          {{ staff.staffLastName }}
-        </td>
-        <td>
-          {{ staff.staffPhone }}
-        </td>
-        <td>
-          {{ staff.staffAddress }}
-        </td>
-        <td>
-          {{ staff.staffRole }}
-        </td>
+  <span
+    class="cursor"
+    (click)="toggleDisplay()"
+    style=" font-size: 3em; color: white; margin-right: 2vw;"
+  >
+    <i class="fas fa-plus"></i>
+  </span>
 
-        <td>
-          <span
-            class="cursor"
-            (click)="open(confirm)"
-            style="font-size: 3em; color: rgb(245, 19, 19);"
-          >
-            <i class="fas fa-trash"></i>
-          </span>
-        </td>
-        <ng-template #confirm let-modal>
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-title">Movie Deletion</h4>
-            <button
-              type="button"
-              class="close"
-              aria-describedby="modal-title"
-              (click)="modal.dismiss('Cross click')"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p><strong>Are you sure you want to delete movie? </strong></p>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              (click)="modal.dismiss('cancel click')"
-            >
-              Cancel
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="deleteStaff(staff.staffId)"
-              (click)="modal.close('Ok click')"
-            >
-              Ok
-            </button>
-          </div>
-        </ng-template>
-        <ng-template #content let-modal>
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Image</h4>
-            <button
-              type="button"
-              class="close"
-              aria-label="Close"
-              (click)="modal.dismiss('Cross click')"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="img">
-              <img src="{{ movie.movieUrlImage }}" />
-            </div>
-          </div>
-        </ng-template>
-        <ng-template #content1 let-modal>
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title1">Image</h4>
-            <button
-              type="button"
-              class="close"
-              aria-label="Close"
-              (click)="modal.dismiss('Cross click')"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="img">
-              <img src="{{ movie.movieUrlPosterImage }}" />
-            </div>
-          </div>
-        </ng-template>
-      </tr>
-    </table>
+  <div *ngIf="isShow">
+    <section>
+      <div class="container">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <th>Staff ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Role</th>
+            <th>Delete</th>
+          </tr>
+        </table>
+
+        <div class="tbl-content">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr *ngFor="let staff of staffs">
+              <td>
+                {{ staff.staffId }}
+              </td>
+              <td>
+                {{ staff.staffFirstName }}
+              </td>
+              <td>
+                {{ staff.staffLastName }}
+              </td>
+              <td>
+                {{ staff.staffPhone }}
+              </td>
+              <td>
+                {{ staff.staffAddress }}
+              </td>
+              <td>
+                {{ staff.staffRole }}
+              </td>
+
+              <td>
+                <span
+                  class="cursor"
+                  (click)="open(confirm)"
+                  style="font-size: 3em; color: rgb(245, 19, 19);"
+                >
+                  <i class="fas fa-trash"></i>
+                </span>
+              </td>
+              <ng-template #confirm let-modal>
+                <div class="mod">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-title">Staff Deletion</h4>
+                    <button
+                      type="button"
+                      class="close"
+                      aria-describedby="modal-title"
+                      (click)="modal.dismiss('Cross click')"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      <strong>Are you sure you want to delete staff? </strong>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      (click)="modal.dismiss('cancel click')"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="deleteStaff(staff.staffId)"
+                      (click)="modal.close('Ok click')"
+                    >
+                      Ok
+                    </button>
+                  </div>
+                </div>
+              </ng-template>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
   </div>
-</div>
 
-<div class="container" *ngIf="!isShow">
-  <form [formGroup]="staffForm" (ngSubmit)="submitRegistration()" novalidate>
-    <div *ngIf="validMessage != ''">
-      <h3 class="has-info">{{ validMessage }}</h3>
-    </div>
-    <div class="form-group">
-      <label>Staff Firstname</label>
-      <input
-        type="email"
-        class="form-control"
-        formControlName="staffFirstName"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label>Staff Lastname</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="staffLastName"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label>Staff Address</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="staffAddress"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label>Staff Role</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="staffRole"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label>Staff Phone</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="staffPhone"
-        required
-      />
-    </div>
+  <div class="container" *ngIf="!isShow">
+    <form [formGroup]="staffForm" (ngSubmit)="submitRegistration()" novalidate>
+      <div *ngIf="validMessage != ''">
+        <h3 class="has-info">{{ validMessage }}</h3>
+      </div>
+      <div class="form-group">
+        <label>Staff Firstname</label>
+        <input
+          type="email"
+          class="inp form-control"
+          formControlName="staffFirstName"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Staff Lastname</label>
+        <input
+          type="text"
+          class="inp form-control"
+          formControlName="staffLastName"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Staff Address</label>
+        <input
+          type="text"
+          class="inp form-control"
+          formControlName="staffAddress"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Staff Role</label>
+        <input
+          type="text"
+          class="inp form-control"
+          formControlName="staffRole"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Staff Phone</label>
+        <input
+          type="text"
+          class="inp form-control"
+          formControlName="staffPhone"
+          required
+        />
+      </div>
 
-    <button type="submit" class="btn btn-primary">
-      Submit
-    </button>
-  </form>
+      <button type="submit" class="btn but">
+        Submit
+      </button>
+    </form>
+  </div>
 </div>

@@ -210,3 +210,66 @@
   height: 4vh;
   width: 4vw;
 }
+.login-container {
+  max-width: 400px;
+  margin: 60px auto 0;
+  height: 50vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.error {
+  color: tomato;
+  font-size: 12px;
+  padding-top: 4px
+}
+
+.login-but {
+  border-radius: 10px;
+  border: 2px solid rgb(255, 255, 255);
+  margin-right: 2vw;
+}
+
+.login-but:hover {
+  border-radius: 10px;
+  border: 2px solid #2a628f;
+  margin-right: 2vw;
+}
+
+.inp {
+  background: transparent;
+  border-color: transparent;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0;
+  transition: all 0.8s;
+  color: #ccc;
+}
+
+.inp:focus {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: #fff;
+  border-bottom: 2px solid #2a628f;
+}
+
+.mod {
+  background-color: #2a628f94;
+}
+
+.mod {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #0c2438e8;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+
+label {
+  color: white;
+}

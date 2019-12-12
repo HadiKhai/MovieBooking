@@ -1,65 +1,51 @@
-<div class="container cnt">
-  <div
-    class="btn-group btn-group-lg"
-    role="group"
-    aria-label="Large button group"
-  >
-    <button
-      type="button"
-      class="btn btn-secondary active"
-      routerLink="/admin/movie"
-    >
-      Movie
-    </button>
-    <button type="button" class="btn btn-secondary" routerLink="/admin/cinema">
-      Cinema
-    </button>
-    <button
-      type="button"
-      class="btn btn-secondary btnadd"
-      routerLink="/admin/showing/cinemas"
-    >
-      Movie event
-    </button>
-  </div>
-</div>
-<div class="container">
-  <table class="table table-bordered table-inverse">
-    <tr>
-      <th>Movie ID</th>
-      <th>Customer ID</th>
-      <th>Customer Name</th>
-      <th>Movie Rating</th>
-      <th>Movie Comments</th>
-    </tr>
-    <tr *ngFor="let rating of movieRatings">
-      <td>
-        {{ rating.movieId }}
-      </td>
-      <td>
-        {{ rating.customerId }}
-      </td>
-      <td>
-        {{ rating.customerUserName }}
-      </td>
-      <td>
-        <ng-template #t let-fill="fill">
-          <span class="star" [class.full]="fill === 100">
-            <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
-          </span>
-        </ng-template>
-        <ngb-rating
-          rate="{{ rating.movieReviewRating }}"
-          [starTemplate]="t"
-          [readonly]="true"
-          max="10"
-        >
-        </ngb-rating>
-        {{ rating.movieReviewRating }}
-      </td>
-      <td>
-        {{ rating.movieReviewComment }}
-      </td>
-    </tr>
-  </table>
+<div class="container-fluid cnt">
+  <span class="cursor" routerLink="/admin/movie" style="font-size: 3em; color: white; margin-right: 2vw;">
+    <i class="fas fa-arrow-circle-left"></i>
+  </span>
+
+ <section>
+   <div class="container">
+     <table cellpadding="0" cellspacing="0" border="0">
+       <tr>
+         <th>Movie ID</th>
+         <th>Customer ID</th>
+         <th>Customer Name</th>
+         <th>Movie Rating</th>
+         <th>Movie Comments</th>
+       </tr>
+       
+     </table>
+     <div class="tbl-content">
+       <table cellpadding="0" cellspacing="0" border="0">
+
+         <tr *ngFor="let rating of movieRatings">
+           <td>
+             {{ rating.movieId }}
+           </td>
+           <td>
+             {{ rating.customerId }}
+           </td>
+           <td>
+             {{ rating.customerUserName }}
+           </td>
+           <td>
+             <ng-template #t let-fill="fill">
+               <span class="star" [class.full]="fill === 100">
+                 <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+               </span>
+             </ng-template>
+             <ngb-rating rate="{{ rating.movieReviewRating }}" [starTemplate]="t" [readonly]="true" max="10">
+             </ngb-rating>
+             
+           </td>
+           <td>
+             {{ rating.movieReviewComment }}
+           </td>
+         </tr>
+       </table>
+     </div>
+     
+   </div>
+ </section>
+
 </div>
