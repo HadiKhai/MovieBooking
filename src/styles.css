@@ -42,3 +42,7 @@ body {
 a .butlink {
   color: white !important;
 }
+
+.cursor {
+  cursor: pointer;
+}

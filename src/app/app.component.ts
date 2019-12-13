@@ -1,6 +1,7 @@
 import { Component, HostListener } from "@angular/core";
 import { Router } from "@angular/router";
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { LoginService } from "./services/Login/login.service";
 
 @Component({
   selector: "app-root",
@@ -13,21 +14,45 @@ export class AppComponent {
   val;
   position;
   navb;
+  usernameLogin = "";
+  passwordLogin = "";
+  userLogin;
+
+  loggedIn = false;
   public isMenuCollapsed = true;
-  constructor(private router: Router, private modalService: NgbModal) {
+  constructor(
+    private loginservice: LoginService,
+    private router: Router,
+    private modalService: NgbModal
+  ) {
     router.events.subscribe(val => {
       this.val = val;
     });
   }
 
   ngOnInit() {
-    console.dir(this.val);
+    this.userLogin = this.loginservice.getUser();
+    if (this.userLogin === undefined) {
+      console.log(this.userLogin);
+    }
   }
   setClass() {
     if (this.position >= 100) {
     } else {
     }
   }
+  login() {
+    this.loginservice.signIn(this.usernameLogin, this.passwordLogin).subscribe(
+      data => {
+        this.userLogin = data;
+        this.loggedIn = true;
+        this.loginservice.setUser(true);
+      },
+      error => console.log(error),
+      () => console.log("data loaded")
+    );
+  }
+
   @HostListener("window:scroll", ["$event"]) // for window scroll events
   onScroll(event) {
     this.position = window.pageYOffset;
@@ -63,5 +88,3 @@ export class AppComponent {
     }
   }
 }
-
-

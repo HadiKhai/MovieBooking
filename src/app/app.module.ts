@@ -53,6 +53,7 @@ import { SeatsResolverService } from "./services/Seats-Resolver/seats-resolver.s
 import { SeatService } from "./services/Seats/seat.service";
 import { RoomResolverService } from "./services/Room-resolver/room-resolver.service";
 import { AppComponent } from "./app.component";
+import { LoginService } from "./services/Login/login.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,7 +111,8 @@ import { AppComponent } from "./app.component";
     CinemaResolverService,
     SeatService,
     SeatsResolverService,
-    RoomResolverService
+    RoomResolverService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

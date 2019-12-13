@@ -47,11 +47,20 @@
           </li>
         </ul>
         <ul class="navbar-nav mr-0">
-          <li class="nav-item login-but">
+          <li *ngIf="!loggedIn" class="nav-item login-but">
             <a class="nav-link cursor" (click)="open(confirm)"
               ><span class="nav-word">Login</span></a
             >
           </li>
+          <li *ngIf="loggedIn" class="nav-item login-but">
+            <span
+              class="nav-link cursor"
+              style="font-size: 3em; color: #ffffff;"
+            >
+              <i class="fas fa-user"> </i
+            ></span>
+          </li>
+
           <li>
             <form class="form-inline my-2 my-lg-0">
               <input
@@ -79,9 +88,11 @@
                               <input
                                 type="email"
                                 name="email"
-                                ng-model="user.username"
+                                ng-model="username"
                                 required
-                                class="inp form-control"
+                                class="inp
+                              form-control"
+                                [(ngModel)]="usernameLogin"
                               />
                             </div>
                           </div>
@@ -94,6 +105,7 @@
                                 ng-model="user.password"
                                 required
                                 class="inp form-control"
+                                [(ngModel)]="passwordLogin"
                               />
                             </div>
                           </div>
@@ -111,7 +123,7 @@
                       <button
                         type="button"
                         class="btn but"
-                        (click)="deleteStaff(staff.staffId)"
+                        (click)="login()"
                         (click)="modal.close('Ok click')"
                       >
                         Login

@@ -72,12 +72,24 @@ export class AdminCinemaComponent implements OnInit {
     }
     this.router.navigateByUrl("/admin/cinema");
   }
-
+  error = [];
   deleteCinema(id: number) {
-    this.cinemaservice.deleteCinema(id).subscribe(data => {
-      console.log("success");
-    });
-    this.router.navigateByUrl("/admin/cinema");
+    this.cinemaservice.deleteCinema(id).subscribe(
+      data => {
+        console.log("success");
+        this.router.navigateByUrl("/admin/cinema");
+      },
+      error => {
+        console.log(error.error);
+        this.error[0] = error.error;
+        this.error[1] = "warning";
+      },
+      () => console.log("data loaded")
+    );
+  }
+  close() {
+    this.error[0] = null;
+    this.error[1] = null;
   }
   getCinemas() {
     this.cinemaservice.getCinemas().subscribe(
