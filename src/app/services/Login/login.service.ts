@@ -10,6 +10,7 @@ const httpOptions = {
 export class LoginService {
   constructor(private http: HttpClient) {}
   private user = JSON.parse(localStorage.getItem("loggedIn") || "false");
+  private userData = localStorage.getItem("userData") || null;
   admin;
   signIn(userName, password) {
     return this.http.get(
@@ -20,9 +21,11 @@ export class LoginService {
     let body = JSON.stringify(userDetails);
     return this.http.post("/server/createAccount", body, httpOptions);
   }
-  setUser(user: boolean) {
+  setUser(user: boolean, data) {
     this.user = user;
+    console.log(data);
     localStorage.setItem("loggedIn", "true");
+    localStorage.setItem("userData", data);
   }
   getUser() {
     return JSON.parse(localStorage.getItem("loggedIn") || this.user.toString());

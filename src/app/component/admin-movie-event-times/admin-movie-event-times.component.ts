@@ -25,8 +25,15 @@ export class AdminMovieEventTimesComponent implements OnInit {
     this.roomId = this.route.snapshot.params.id2;
     this.movieId = this.route.snapshot.params.id3;
     this.timeForm = new FormGroup({
-      movieStartTime: new FormControl("YYYY-MM-DD", Validators.required),
-      movieEndTime: new FormControl("", Validators.required)
+      movieStartTime: new FormControl(
+        "YYYY-MM-DDTHH:MM:SS.300Z",
+        Validators.required
+      ),
+      movieEndTime: new FormControl(
+        "YYYY-MM-DDTHH:MM:SS.300Z",
+        Validators.required
+      ),
+      ticketPrice: new FormControl("", Validators.required)
     });
   }
   validMessage;

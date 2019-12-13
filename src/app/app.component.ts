@@ -46,7 +46,7 @@ export class AppComponent {
       data => {
         this.userLogin = data;
         this.loggedIn = true;
-        this.loginservice.setUser(true);
+        this.loginservice.setUser(true, data);
       },
       error => console.log(error),
       () => console.log("data loaded")
