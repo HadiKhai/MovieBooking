@@ -35,7 +35,7 @@
               ><span class="nav-word  nav-b">Movies</span></a
             >
           </li>
-          <li class="nav-item" [routerLinkActive]="['active']">
+          <li *ngIf="isAdmin" class="nav-item" [routerLinkActive]="['active']">
             <a class="nav-link" id="Admin" routerLink="/admin"
               ><span class="nav-word nav-b">Admin</span></a
             >
@@ -52,15 +52,29 @@
               ><span class="nav-word">Login</span></a
             >
           </li>
-          <li *ngIf="loggedIn" class="nav-item login-but">
-            <span
-              class="nav-link cursor"
-              style="font-size: 3em; color: #ffffff;"
-            >
-              <i class="fas fa-user"> </i
-            ></span>
-          </li>
 
+          <li *ngIf="loggedIn" class="nav-item">
+            <a class="nav-link"
+              ><span class="nav-word nav-b">{{
+                userLogin?.customerFirstName
+              }}</span></a
+            >
+          </li>
+          <li *ngIf="isAdmin" class="nav-item">
+            <a class="nav-link"
+              ><span class="nav-word nav-b">{{
+                adminLogin?.adminUserName
+              }}</span></a
+            >
+          </li>
+          <li *ngIf="loggedIn" class="nav-item login-but">
+            <a class="nav-link cursor"><i class="fas fa-user"> </i></a>
+          </li>
+          <li *ngIf="loggedIn" class="nav-item login-but">
+            <a class="nav-link cursor" (click)="logout()"
+              ><span class="nav-word">Logout</span></a
+            >
+          </li>
           <li>
             <form class="form-inline my-2 my-lg-0">
               <input
@@ -127,6 +141,14 @@
                         (click)="modal.close('Ok click')"
                       >
                         Login
+                      </button>
+                      <button
+                        type="button"
+                        class="btn but"
+                        (click)="loginAsAdmin()"
+                        (click)="modal.close('Ok click')"
+                      >
+                        Login as Admin
                       </button>
                     </div>
                   </ng-template>

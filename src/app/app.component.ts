@@ -2,6 +2,7 @@ import { Component, HostListener } from "@angular/core";
 import { Router } from "@angular/router";
 import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { LoginService } from "./services/Login/login.service";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-root",
@@ -13,12 +14,15 @@ export class AppComponent {
   title = "CinemaBookingRAH";
   val;
   position;
+  loginForm: FormGroup;
   navb;
   usernameLogin = "";
   passwordLogin = "";
   userLogin;
-
+  userIsAdmin;
+  adminLogin;
   loggedIn = false;
+  isAdmin = false;
   public isMenuCollapsed = true;
   constructor(
     private loginservice: LoginService,
@@ -32,8 +36,26 @@ export class AppComponent {
 
   ngOnInit() {
     this.userLogin = this.loginservice.getUser();
+    this.adminLogin = new FormGroup({
+      customerAddress: new FormControl("", Validators.required),
+      customerEmail: new FormControl("", Validators.required),
+      customerFirstName: new FormControl("", Validators.required),
+      customerGender: new FormControl("", Validators.required),
+      customerLastName: new FormControl("", Validators.required),
+      customerPassword: new FormControl("YYYY-MM-DD", Validators.required),
+      customerPhone: new FormControl("", Validators.required),
+      customerUsername: new FormControl("", Validators.required)
+    });
     if (this.userLogin === undefined) {
       console.log(this.userLogin);
+    }
+    this.loggedIn = this.loginservice.isLoggedIn();
+    this.isAdmin = this.loginservice.isAdmin();
+
+    if (this.loggedIn) {
+      this.userLogin = this.loginservice.getUser();
+      this.adminLogin = this.loginservice.getAdmin();
+      this.userIsAdmin = this.loginservice.isAdmin();
     }
   }
   setClass() {
@@ -41,16 +63,40 @@ export class AppComponent {
     } else {
     }
   }
+  logout() {
+    this.loginservice.logoutUser();
+    this.loggedIn = this.loginservice.isLoggedIn();
+    this.isAdmin = this.loginservice.isAdmin();
+    this.usernameLogin = "";
+    this.passwordLogin = "";
+    this.adminLogin = null;
+  }
   login() {
     this.loginservice.signIn(this.usernameLogin, this.passwordLogin).subscribe(
       data => {
         this.userLogin = data;
+        this.adminLogin = null;
         this.loggedIn = true;
         this.loginservice.setUser(true, data);
       },
       error => console.log(error),
       () => console.log("data loaded")
     );
+  }
+  loginAsAdmin() {
+    this.loginservice
+      .signInAdmin(this.usernameLogin, this.passwordLogin)
+      .subscribe(
+        data => {
+          this.adminLogin = data;
+          this.userLogin = null;
+          this.loggedIn = true;
+          this.isAdmin = true;
+          this.loginservice.setAdmin(true, data);
+        },
+        error => console.log(error),
+        () => console.log("data loaded")
+      );
   }
 
   @HostListener("window:scroll", ["$event"]) // for window scroll events

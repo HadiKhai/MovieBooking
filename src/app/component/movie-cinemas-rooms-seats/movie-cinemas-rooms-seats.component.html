@@ -1,28 +1,63 @@
-<div class="container pt-4 mb-5">
-  <div class="row justify-content-center">
-    <div class="col-md-9 ">
-      <div class="seat_plan_wrap">
-        <div class="row">
-          <div class="col-md-6">
-            <h6>Select Seats</h6>
-            <table>
-              <tr *ngFor="let seats of seatsArraySorted">
-                <td *ngFor="let seat of seats" class="seats">
-                  <img
-                    class="image"
-                    (click)="saveSeatId(seat.seatId, seat.seatStatus)"
-                    (click)="toggleComponent(seat.seatId, seat.seatStatus)"
-                    [ngClass]="{
+
+
+<div class="container-fluid cnt">
+
+  
+
+
+<div class="cont">
+  <div class="row">
+
+    <div class="col">
+      <h1>Select Seats</h1>
+    </div>
+
+    <div class="backbut"><span class="arr cursor" routerLink="/movies/{{movieId}}"
+        style="font-size: 3em; color: white; margin-right: 2vw;">
+        <i class="fas fa-arrow-circle-left"></i>
+      </span></div>
+
+
+  </div>
+
+
+  <section>
+    <div class="container pt-4 mb-5">
+      <div class="row justify-content-center">
+
+        <div class="tablecnt">
+
+          <table>
+            <tr *ngFor="let seats of seatsArraySorted">
+              <td *ngFor="let seat of seats" class="seats">
+                <img class="image cursor" (click)="saveSeatId(seat.seatId, seat.seatStatus)"
+                  (click)="toggleComponent(seat.seatId, seat.seatStatus)" [ngClass]="{
                       nowbooking: toggleC(seat.seatId),
                       reserved: seat.seatStatus
-                    }"
-                  />
-                </td>
-              </tr>
-            </table>
-          </div>
+                    }" />
+              </td>
+            </tr>
+          </table>
+
         </div>
+
+
+
       </div>
     </div>
+  </section>
+
+  <div class="row justify-content-center">
+
+    <div>
+      <button type="button" class="btn but btn-secondary">
+        Book Seat
+      </button>
+    </div>
+
+
   </div>
+</div>
+  
+
 </div>
