@@ -17,6 +17,7 @@ export class RoomComponent implements OnInit {
   isShow = true;
   roomForm: FormGroup;
   id;
+  toggle;
   validMessage: string = "";
   mySubscription: any;
   disable = true;
@@ -51,6 +52,7 @@ export class RoomComponent implements OnInit {
     this.route.data.subscribe(
       (data: { rooms: any }) => (this.rooms = data.rooms)
     );
+
     this.id = this.route.snapshot.params.id;
     this.roomArray = Array.of(this.rooms);
     this.roomArray = this.roomArray[0];
@@ -58,13 +60,25 @@ export class RoomComponent implements OnInit {
     for (let i = 0; i < size; i++) {
       this.roomBooleanArrays.push(false);
     }
-    console.log(this.roomBooleanArrays);
+    console.log(this.rooms);
     this.roomForm = new FormGroup({
       roomCapacity: new FormControl("", Validators.required),
       roomStatus: new FormControl("true", Validators.required),
       roomType: new FormControl("", Validators.required)
     });
   }
+  ngOnChanges() {
+    this.route.data.subscribe(
+      (data: { rooms: any }) => (this.rooms = data.rooms)
+    );
+    console.log(this.rooms);
+    this.id = this.route.snapshot.params.id;
+    this.roomArray = Array.of(this.rooms);
+    this.roomArray = this.roomArray[0];
+    const size = this.roomArray.length;
+    this.router.navigateByUrl("/admin/cinemas/" + this.id + "/rooms");
+  }
+
   toggleComponent(id) {
     let index;
     for (let i = 0; i < this.roomArray.length; i++) {

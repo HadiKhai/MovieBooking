@@ -9,7 +9,7 @@
   );
 }
 .custom-navbar {
-  height: 7vh;
+  height: 6vh;
   transition: height 0.4s ease-in;
 }
 
@@ -273,7 +273,7 @@ label {
 .but {
   border-color: rgba(4, 12, 32, 0.699);
   font-family: "Montserrat", sans-serif;
-  color: rgb(4, 12, 32);
+  color: white;
 }
 
 .but:hover {
@@ -291,22 +291,23 @@ label {
   box-shadow: transparent !important;
 }
 
-.active {
+label.active {
+  background-color: rgba(4, 12, 32, 0.699) !important;
   border-color: rgba(4, 12, 32, 0.699) !important;
 
   color: white;
   box-shadow: transparent !important;
 }
-.butlink {
-  border-color: rgba(4, 12, 32, 0.699) !important;
-  color: white;
-  box-shadow: transparent !important;
-}
+
 .canc {
   font-family: "Montserrat", sans-serif;
 }
 
 .tab {
-  background: transparent;
+  background: transparent !important;
+  color: white !important;
+}
+
+.tab-tit {
   color: white;
 }

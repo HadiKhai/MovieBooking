@@ -27,22 +27,22 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" [routerLinkActive]="['active']">
             <a class="nav-link" id="Home" routerLink="/home"
-              ><span class="nav-word">Home</span>
+              ><span class="nav-word  nav-b">Home</span>
             </a>
           </li>
           <li class="nav-item" [routerLinkActive]="['active']">
             <a class="nav-link" id="Movies" routerLink="/movies"
-              ><span class="nav-word">Movies</span></a
+              ><span class="nav-word  nav-b">Movies</span></a
             >
           </li>
           <li class="nav-item" [routerLinkActive]="['active']">
             <a class="nav-link" id="Admin" routerLink="/admin"
-              ><span class="nav-word">Admin</span></a
+              ><span class="nav-word nav-b">Admin</span></a
             >
           </li>
           <li class="nav-item" [routerLinkActive]="['active']">
             <a class="nav-link" id="Admin" routerLink="/cinema"
-              ><span class="nav-word">Cinema</span></a
+              ><span class="nav-word nav-b">Cinema</span></a
             >
           </li>
         </ul>
@@ -66,7 +66,9 @@
             <div class="modal-body mod">
               <ngb-tabset class="nav-fill">
                 <ngb-tab>
-                  <ng-template ngbTabTitle class="tab">Sign in</ng-template>
+                  <ng-template ngbTabTitle class="tab"
+                    ><span class="tab-tit">Sign in</span></ng-template
+                  >
                   <ng-template ngbTabContent>
                     <form name="myForm">
                       <div class="login-container">
@@ -118,7 +120,9 @@
                   </ng-template>
                 </ngb-tab>
                 <ngb-tab>
-                  <ng-template ngbTabTitle class="tab">Sign up</ng-template>
+                  <ng-template ngbTabTitle class="tab"
+                    ><span class="tab-tit">Sign up</span></ng-template
+                  >
                   <ng-template ngbTabContent>
                     <form name="myForm">
                       <div class="login-container">
@@ -159,7 +163,7 @@
                             <div class="form-group">
                               <label>Phone</label>
                               <input
-                                type="number"
+                                type="tel"
                                 name="Name"
                                 ng-model="user.username"
                                 required

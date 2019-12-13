@@ -81,6 +81,21 @@ export class AdminMovieComponent implements OnInit {
     });
   }
 
+  ngOnChanges() {
+    this.getMovies();
+    console.dir(this.movies);
+    this.movieForm = new FormGroup({
+      movieName: new FormControl("", Validators.required),
+      movieDescription: new FormControl("", Validators.required),
+      movieDirectors: new FormControl("", Validators.required),
+      movieDuration: new FormControl("", Validators.required),
+      movieGenre: new FormControl("", Validators.required),
+      movieReleaseDate: new FormControl("YYYY-MM-DD", Validators.required),
+      movieStars: new FormControl("", Validators.required),
+      movieUrlImage: new FormControl("", Validators.required),
+      movieUrlPosterImage: new FormControl("", Validators.required)
+    });
+  }
   submitRegistration() {
     console.dir(this.movieForm.valid);
     if (this.movieForm.valid) {
