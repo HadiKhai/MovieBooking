@@ -25,6 +25,7 @@ export class AppComponent {
   adminLogin;
   loggedIn = false;
   isAdmin = false;
+  wasAdmin = false;
   public isMenuCollapsed = true;
   myGroup: FormGroup;
   constructor(
@@ -54,11 +55,13 @@ export class AppComponent {
     }
     this.loggedIn = this.loginservice.isLoggedIn();
     this.isAdmin = this.loginservice.isAdmin();
+    this.wasAdmin = this.loginservice.isAdmin();
 
     if (this.loggedIn) {
       this.userLogin = this.loginservice.getUser();
       this.adminLogin = this.loginservice.getAdmin();
       this.userIsAdmin = this.loginservice.isAdmin();
+      this.wasAdmin = this.loginservice.isAdmin();
     }
   }
   setClass() {
@@ -73,6 +76,10 @@ export class AppComponent {
     this.usernameLogin = "";
     this.passwordLogin = "";
     this.adminLogin = null;
+    console.log(this.wasAdmin);
+    if (this.wasAdmin === true) {
+      this.router.navigateByUrl("/home");
+    }
   }
   login() {
     this.loginservice.signIn(this.usernameLogin, this.passwordLogin).subscribe(
@@ -95,6 +102,7 @@ export class AppComponent {
           this.userLogin = null;
           this.loggedIn = true;
           this.isAdmin = true;
+          this.wasAdmin = true;
           this.loginservice.setAdmin(true, data);
         },
         error => console.log(error),

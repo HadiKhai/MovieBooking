@@ -20,6 +20,8 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
   seatId;
   movie_event;
   seatsBooleanArray = [];
+  seatsReserved = [];
+  seatsId = [];
   user;
   row;
   column;
@@ -94,11 +96,24 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
           this.seatsArraySorted[i][j] = this.seatsArray[i * 20 + j];
         }
       }
+      console.log(this.seatsArray);
     }
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.seatsArray.length; i++) {
       this.seatsBooleanArray.push(false);
     }
+    for (let i = 0; i < size; i++) {
+      this.seatsReserved.push(this.seatsArray[i].seatStatus);
+    }
+    console.log(this.seatsReserved);
+    for (let i = 0; i < size; i++) {
+      this.seatsId.push(this.seatsArray[i].seatId);
+    }
+    console.log(this.seatsId);
+  }
+  seeReserved(seatId) {
+    let index = this.seatsId.indexOf(seatId);
+    return this.seatsReserved[index];
   }
   toggleComponent(id, seatStatus, seatRow, seatColumn, ticketPrice) {
     if (!seatStatus) {
@@ -163,33 +178,16 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
           .subscribe(
             data => {
               this.message = "Successfully Booked";
-              this.router.navigateByUrl(
-                "/movies/" +
-                  this.movieId +
-                  "/cinemas/" +
-                  this.cinemaId +
-                  "/rooms/" +
-                  this.roomId +
-                  "/movie_event/" +
-                  this.movie_event +
-                  "/seats"
-              );
             },
             err => {
               console.error(err.error.text);
               if (err.error.text === "Reserved!") {
                 this.message = "Successfully Booked";
-                this.router.navigateByUrl(
-                  "/movies/" +
-                    this.movieId +
-                    "/cinemas/" +
-                    this.cinemaId +
-                    "/rooms/" +
-                    this.roomId +
-                    "/movie_event/" +
-                    this.movie_event +
-                    "/seats"
+                this.route.data.subscribe(
+                  (data: { seats: any }) => (this.seats = data.seats)
                 );
+                let index = this.seatsId.indexOf(this.seatId);
+                this.seatsReserved[index] = true;
               } else {
                 this.message = "Error: " + err.error[1];
               }
