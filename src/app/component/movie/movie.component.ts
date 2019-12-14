@@ -1,6 +1,6 @@
 import { DomSanitizer } from "@angular/platform-browser";
 import { Component, OnInit, Input, TemplateRef } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 import { MovieService } from "src/app/services/Movie/movie.service";
 
 @Component({
@@ -12,17 +12,42 @@ export class MovieComponent implements OnInit {
   movie;
   showAllTimes = false;
   id;
+  mySubscription: any;
+
   constructor(
-    private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
-    private movieService: MovieService
-  ) {}
+    private movieService: MovieService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+      return false;
+    };
+    this.mySubscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
+  }
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
     this.getMovieById(this.id);
+    console.log(this.movie);
   }
 
+  ngOnChanges() {
+    this.id = this.route.snapshot.params.id;
+    this.getMovieById(this.id);
+    console.log(this.movie);
+  }
   getMovieById(id: number) {
     console.log(id);
     this.movieService.getMovie(id).subscribe(

@@ -12,6 +12,7 @@ export class MovieCinemasComponent implements OnInit {
   cinemas;
   movieId;
   cinemaId;
+  loaded = false;
   toggle = true;
   cinemasArray: any[];
   cinemasBooleanArrays = [];
@@ -26,13 +27,17 @@ export class MovieCinemasComponent implements OnInit {
     this.route.data.subscribe(
       (data: { cinema: any }) => (this.cinemas = data.cinema)
     );
-    this.cinemasArray = Array.of(this.cinemas);
-    this.cinemasArray = this.cinemasArray[0];
-    this.cinemaId = this.cinemasArray[0].cinemaId;
-    const size = this.cinemasArray.length;
-    console.log(this.cinemasArray);
-    for (let i = 0; i < size; i++) {
-      this.cinemasBooleanArrays.push(false);
+    console.log(this.cinemas);
+    if (this.cinemas.length !== 0) {
+      this.loaded = true;
+      this.cinemasArray = Array.of(this.cinemas);
+      this.cinemasArray = this.cinemasArray[0];
+      this.cinemaId = this.cinemasArray[0].cinemaId;
+      const size = this.cinemasArray.length;
+      console.log(this.cinemasArray);
+      for (let i = 0; i < size; i++) {
+        this.cinemasBooleanArrays.push(false);
+      }
     }
   }
   getCinemas(id) {
@@ -61,13 +66,15 @@ export class MovieCinemasComponent implements OnInit {
     }
   }
   toggleC(cinemaId) {
-    let index;
-    for (let i = 0; i < this.cinemasArray.length; i++) {
-      if (cinemaId === this.cinemasArray[i].cinemaId) {
-        index = i;
+    if (this.cinemas.length !== 0) {
+      let index;
+      for (let i = 0; i < this.cinemasArray.length; i++) {
+        if (cinemaId === this.cinemasArray[i].cinemaId) {
+          index = i;
+        }
       }
+      return this.cinemasBooleanArrays[index];
     }
-    return this.cinemasBooleanArrays[index];
   }
   seeIfToggled() {
     for (var i = 0; i < this.cinemasBooleanArrays.length; i++) {

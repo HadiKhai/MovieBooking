@@ -14,7 +14,7 @@ export class AdminCinemaComponent implements OnInit {
   public cinemas;
   isShow = true;
   cinemaForm: FormGroup;
-
+  warning = false;
   validMessage: string = "";
   mySubscription: any;
   constructor(
@@ -83,6 +83,7 @@ export class AdminCinemaComponent implements OnInit {
         console.log(error.error);
         this.error[0] = error.error;
         this.error[1] = "warning";
+        this.warning = true;
       },
       () => console.log("data loaded")
     );
@@ -90,6 +91,7 @@ export class AdminCinemaComponent implements OnInit {
   close() {
     this.error[0] = null;
     this.error[1] = null;
+    this.warning = false;
   }
   getCinemas() {
     this.cinemaservice.getCinemas().subscribe(

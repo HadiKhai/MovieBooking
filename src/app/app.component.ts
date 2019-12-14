@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { LoginService } from "./services/Login/login.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -16,6 +17,7 @@ export class AppComponent {
   position;
   loginForm: FormGroup;
   navb;
+  model;
   usernameLogin = "";
   passwordLogin = "";
   userLogin;
@@ -24,6 +26,7 @@ export class AppComponent {
   loggedIn = false;
   isAdmin = false;
   public isMenuCollapsed = true;
+  myGroup: FormGroup;
   constructor(
     private loginservice: LoginService,
     private router: Router,
@@ -36,13 +39,13 @@ export class AppComponent {
 
   ngOnInit() {
     this.userLogin = this.loginservice.getUser();
-    this.adminLogin = new FormGroup({
+    this.loginForm = new FormGroup({
       customerAddress: new FormControl("", Validators.required),
       customerEmail: new FormControl("", Validators.required),
       customerFirstName: new FormControl("", Validators.required),
-      customerGender: new FormControl("", Validators.required),
+      customerGender: new FormControl(this.model, Validators.required),
       customerLastName: new FormControl("", Validators.required),
-      customerPassword: new FormControl("YYYY-MM-DD", Validators.required),
+      customerPassword: new FormControl("", Validators.required),
       customerPhone: new FormControl("", Validators.required),
       customerUsername: new FormControl("", Validators.required)
     });
@@ -109,7 +112,26 @@ export class AppComponent {
       this.navb = false;
     }
   }
+  validMessage = "";
+  submitRegistration() {
+    if (this.loginForm.valid) {
+      this.validMessage = "Your Cinema has been added!";
+      this.loginservice.createAccount(this.loginForm.value).subscribe(
+        data => {
+          this.loginForm.reset();
+          return true;
+        },
 
+        error => {
+          return Observable.throw(error);
+        }
+      );
+    } else {
+      this.validMessage =
+        "Please Fill the missing information in the form before submitting";
+    }
+    this.router.navigateByUrl("/admin/cinema");
+  }
   closeResult: string;
   open(content) {
     this.modalService

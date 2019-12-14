@@ -1,0 +1,27 @@
+<div class="form-inline movie-search-container">
+  <form class="form-inline my-2 my-lg-0">
+    <input
+      #searchBox
+      class="search form-control mr-sm-2"
+      type="search"
+      placeholder="Search"
+      (input)="search(searchBox.value)"
+    />
+  </form>
+
+  <ul class="movie-search-result">
+    <li *ngFor="let movie of movies">
+      <a (click)="onClick(movie.movieId)" class="clearfix cursor">
+        <img
+          class="movie-search-result-image"
+          src="{{ movie.movieUrlImage }}"
+          alt="{{ movie.movieName }}"
+        />
+        <span class="movie-search-result-info">
+          <strong>{{ movie.movieName }}</strong>
+          <em>{{ movie.movieStars }}</em>
+        </span>
+      </a>
+    </li>
+  </ul>
+</div>

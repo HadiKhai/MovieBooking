@@ -54,6 +54,8 @@ import { SeatService } from "./services/Seats/seat.service";
 import { RoomResolverService } from "./services/Room-resolver/room-resolver.service";
 import { AppComponent } from "./app.component";
 import { LoginService } from "./services/Login/login.service";
+import { SearchComponent } from "./component/search/search.component";
+import { RouterModule } from "@angular/router";
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +78,8 @@ import { LoginService } from "./services/Login/login.service";
     AdminMovieEventTimesComponent,
     MovieCinemasComponent,
     MovieCinemasRoomsComponent,
-    MovieCinemasRoomsSeatsComponent
+    MovieCinemasRoomsSeatsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
