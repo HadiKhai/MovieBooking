@@ -130,7 +130,6 @@ export class AppComponent {
       this.validMessage =
         "Please Fill the missing information in the form before submitting";
     }
-    this.router.navigateByUrl("/admin/cinema");
   }
   closeResult: string;
   open(content) {

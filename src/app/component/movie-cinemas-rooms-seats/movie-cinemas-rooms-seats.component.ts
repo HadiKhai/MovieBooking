@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { SeatService } from "src/app/services/Seats/seat.service";
+import { LoginService } from "src/app/services/Login/login.service";
 
 @Component({
   selector: "app-movie-cinemas-rooms-seats",
@@ -18,9 +19,11 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
   seatId;
   movie_event;
   seatsBooleanArray = [];
+  user;
   constructor(
     private seatService: SeatService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private loginService: LoginService
   ) {}
 
   ngOnInit() {
@@ -32,6 +35,8 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
       (data: { seats: any }) => (this.seats = data.seats)
     );
     this.distributeSeats();
+    this.user = this.loginService.getUser();
+    console.log(this.user);
   }
   distributeSeats() {
     this.seatsArray = Array.of(this.seats);
