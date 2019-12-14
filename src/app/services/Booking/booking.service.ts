@@ -10,6 +10,9 @@ const httpOptions = {
 })
 export class BookingService {
   constructor(private http: HttpClient) {}
+  getBookingByUser(id) {
+    return this.http.get("/server/bookings/" + id);
+  }
   bookSeat(
     movieId,
     cinemaId,

@@ -1,22 +1,20 @@
 <div class="container-fluid cnt">
-  <div
-    class="btn-group btn-group-lg"
-    role="group"
-    aria-label="Large button group"
-  >
-    <button type="button" class="but btn btn-secondary" routerLink="/admin/movie">
-      Movie
-    </button>
-    <button type="button" class="but btn btn-secondary" routerLink="/admin/cinema">
-      Cinema
-    </button>
-    <button
-      type="button"
-      class="but btn btn-secondary"
-      routerLink="/admin/showing/cinemas"
+  <div class="row justify-content-between" width="100%">
+    <div
+      class="btn-group btn-group-lg col-3"
+      role="group"
+      aria-label="Large button group"
     >
-      Movie event
-    </button>
+      <button type="button" class="but btn" routerLink="/admin/movie">
+        Movie
+      </button>
+      <button type="button" class="but btn" routerLink="/admin/cinema">
+        Cinema
+      </button>
+      <button type="button" class="but btn" routerLink="/admin/showing/cinemas">
+        Movie event
+      </button>
+    </div>
+    <div class="col-1"></div>
   </div>
-  
 </div>

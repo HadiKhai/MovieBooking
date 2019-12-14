@@ -1,0 +1,19 @@
+<div class="container-fluid cnt">
+  <div class="cont">
+    <div class="row">
+      <div class="col">
+        <h1>See Bookings</h1>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div *ngFor="let booking of Bookings" class="col-6 ml-0">
+        <div class="ticket justify-content-center">
+          <div class="tick"></div>
+          <div class="stub"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- *ngFor="let booking of Bookings"  -->

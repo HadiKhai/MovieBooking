@@ -11,7 +11,20 @@
             class="img-fluid"
             src="{{ movie.movieUrlImage }}"
             alt="{{ movie.movieName }}"
+            x
           />
+          <ng-template #t let-fill="fill">
+            <span class="star" [class.full]="fill === 100">
+              <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+            </span>
+          </ng-template>
+          <ngb-rating
+            rate="6.25"
+            [starTemplate]="t"
+            [readonly]="false"
+            max="10"
+          >
+          </ngb-rating>
         </div>
       </div>
       <div class="col-md-8 ">

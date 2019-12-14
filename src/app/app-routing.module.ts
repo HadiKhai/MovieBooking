@@ -20,12 +20,13 @@ import { CinemaResolverService } from "./services/Cinema-resolver/cinema-resolve
 import { MovieCinemasRoomsSeatsComponent } from "./component/movie-cinemas-rooms-seats/movie-cinemas-rooms-seats.component";
 import { SeatsResolverService } from "./services/Seats-Resolver/seats-resolver.service";
 import { RoomResolverService } from "./services/Room-resolver/room-resolver.service";
+import { SeeMyBookingComponent } from "./component/see-my-booking/see-my-booking.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "home", component: HomeComponent, data: { state: "home" } },
   { path: "movies", component: MoviesComponent, data: { state: "movies" } },
-
+  { path: "seeMyBooking", component: SeeMyBookingComponent },
   {
     path: "movies/:id",
     component: MovieComponent,

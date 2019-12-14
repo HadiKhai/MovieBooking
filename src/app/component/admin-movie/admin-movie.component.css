@@ -23,12 +23,12 @@
 }
 
 .but {
-  height: 10vh;
+  padding: 1.5vh;
   background-color: rgba(0, 0, 0, 0.541);
   border-color: rgba(4, 12, 32, 0.699);
   font-family: "Montserrat", sans-serif;
-  font-size: 1.2em;
   color: white;
+  font-size: 1.2em;
 }
 
 .active {

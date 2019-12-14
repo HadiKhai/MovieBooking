@@ -9,19 +9,18 @@
 }
 
 .but {
-  height: 10vh;
+  padding: 1.5vh;
   background-color: rgba(0, 0, 0, 0.541);
   border-color: rgba(4, 12, 32, 0.699);
-  font-family: "Montserrat",
-    sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: white;
+  font-size: 1.2em;
 }
 
 .active {
   background-color: rgba(15, 58, 122, 0.589);
   border-color: rgba(20, 21, 70, 0.664);
-  font-family: "Montserrat",
-    sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #ffffff;
   text-shadow: 2px 2px 5px #2a628f;
 }

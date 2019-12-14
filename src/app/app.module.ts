@@ -56,6 +56,8 @@ import { AppComponent } from "./app.component";
 import { LoginService } from "./services/Login/login.service";
 import { SearchComponent } from "./component/search/search.component";
 import { RouterModule } from "@angular/router";
+import { SeeMyBookingComponent } from "./component/see-my-booking/see-my-booking.component";
+import { MoviesResolverService } from "./movies-resolver.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +81,8 @@ import { RouterModule } from "@angular/router";
     MovieCinemasComponent,
     MovieCinemasRoomsComponent,
     MovieCinemasRoomsSeatsComponent,
-    SearchComponent
+    SearchComponent,
+    SeeMyBookingComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +118,8 @@ import { RouterModule } from "@angular/router";
     SeatService,
     SeatsResolverService,
     RoomResolverService,
-    LoginService
+    LoginService,
+    MoviesResolverService
   ],
   bootstrap: [AppComponent]
 })

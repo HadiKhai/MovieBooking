@@ -46,3 +46,9 @@ a .butlink {
 .cursor {
   cursor: pointer;
 }
+
+ngb-alert {
+  background-color: rgba(8, 24, 37, 0.836) !important;
+  color: white !important;
+  border-color: transparent !important;
+}
