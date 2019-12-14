@@ -52,3 +52,7 @@ ngb-alert {
   color: white !important;
   border-color: transparent !important;
 }
+
+.no-pad {
+  padding: 0 !important;
+}

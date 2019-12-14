@@ -48,20 +48,28 @@
         </ul>
         <ul class="navbar-nav mr-0">
           <li *ngIf="!loggedIn" class="nav-item login-but">
-            <a class="nav-link cursor" (click)="open(confirm)"
+            <a class="nav-link cursor no-pad" (click)="open(confirm)"
               ><span class="nav-word">Login</span></a
             >
           </li>
 
           <li *ngIf="loggedIn" class="btn user-but nav-item cursor">
-            <div *ngIf="!isAdmin" routerLink="/seeMyBooking" class="row">
+            <div
+              *ngIf="!isAdmin"
+              routerLink="/profile/{{ userLogin.customerId }}"
+              class="row"
+            >
               <div class="col px-0">
-                <a class="nav-link cursor" routerLink="/seeMyBooking"
+                <a
+                  class="nav-link cursor"
+                  routerLink="/profile/{{ userLogin.customerId }}"
                   ><i class="fas fa-user"> </i
                 ></a>
               </div>
               <div class="col px-0">
-                <a class="nav-link" routerLink="/seeMyBooking"
+                <a
+                  class="nav-link"
+                  routerLink="/profile/{{ userLogin.customerId }}"
                   ><span class="nav-word nav-b"
                     >{{ userLogin?.customerFirstName }}
                   </span></a

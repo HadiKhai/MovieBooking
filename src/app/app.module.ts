@@ -57,7 +57,9 @@ import { LoginService } from "./services/Login/login.service";
 import { SearchComponent } from "./component/search/search.component";
 import { RouterModule } from "@angular/router";
 import { SeeMyBookingComponent } from "./component/see-my-booking/see-my-booking.component";
-import { MoviesResolverService } from "./movies-resolver.service";
+import { MoviesResolverService } from "./services/Movies-resolver/movies-resolver.service";
+import { MovieCardAllComponent } from "./component/movie-card-all/movie-card-all.component";
+import { MoviesAllResolverService } from "./services/Movies-All/movies-all-resolver.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +84,8 @@ import { MoviesResolverService } from "./movies-resolver.service";
     MovieCinemasRoomsComponent,
     MovieCinemasRoomsSeatsComponent,
     SearchComponent,
-    SeeMyBookingComponent
+    SeeMyBookingComponent,
+    MovieCardAllComponent
   ],
   imports: [
     BrowserModule,
@@ -119,7 +122,8 @@ import { MoviesResolverService } from "./movies-resolver.service";
     SeatsResolverService,
     RoomResolverService,
     LoginService,
-    MoviesResolverService
+    MoviesResolverService,
+    MoviesAllResolverService
   ],
   bootstrap: [AppComponent]
 })

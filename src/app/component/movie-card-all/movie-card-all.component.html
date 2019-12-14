@@ -1,0 +1,49 @@
+<div class="moviegrid">
+  <div class="row align-self-stretch">
+    <div
+      *ngFor="let movie of movies"
+      class="moviegrid-item py-4 col-md-3 rotate"
+    >
+      <section class="card sample-content sc">
+        <article class="sample-column card-wrapper sc">
+          <igx-card class="sc">
+            <igx-card-media height="80vh">
+              <img src="{{ movie.movieUrlImage }}" />
+            </igx-card-media>
+
+            <igx-card-header>
+              <h3 class="title" igxCardHeaderTitle>{{ movie.movieName }}</h3>
+              <h5 igxCardHeaderSubtitle>{{ movie.movieGenre }}</h5>
+            </igx-card-header>
+            <div class="back container-fluid">
+              <div class="back-content row">
+                <div class="col-12" height="20%">
+                  <h3 class="title" igxCardHeaderTitle>
+                    {{ movie.movieName }}
+                  </h3>
+                  <h5 igxCardHeaderSubtitle>{{ movie.movieGenre }}</h5>
+                </div>
+                <div class="desc overflow-hidden col-12" height="70%">
+                  <p name="description">{{ movie.movieDescription }}</p>
+                </div>
+                <div class="col-12" height="10%">
+                  <igx-card-actions>
+                    <button
+                      igxButton
+                      igx
+                      Ripple
+                      class="butn"
+                      routerLink="/movies/{{ movie.movieId }}"
+                    >
+                      Reserve
+                    </button>
+                  </igx-card-actions>
+                </div>
+              </div>
+            </div>
+          </igx-card>
+        </article>
+      </section>
+    </div>
+  </div>
+</div>

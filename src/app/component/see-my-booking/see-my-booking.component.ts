@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LoginService } from "src/app/services/Login/login.service";
 import { BookingService } from "src/app/services/Booking/booking.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-see-my-booking",
@@ -13,14 +14,17 @@ export class SeeMyBookingComponent implements OnInit {
   Bookings;
   constructor(
     private loginService: LoginService,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.user = this.loginService.getUser();
     this.customerId = this.user.customerId;
     console.log(this.customerId);
-    this.getBookingDetails(this.customerId);
+    this.route.data.subscribe(
+      (data: { bookings: any }) => (this.Bookings = data.bookings)
+    );
   }
 
   getBookingDetails(id) {

@@ -21,16 +21,33 @@ import { MovieCinemasRoomsSeatsComponent } from "./component/movie-cinemas-rooms
 import { SeatsResolverService } from "./services/Seats-Resolver/seats-resolver.service";
 import { RoomResolverService } from "./services/Room-resolver/room-resolver.service";
 import { SeeMyBookingComponent } from "./component/see-my-booking/see-my-booking.component";
+import { MoviesResolverService } from "./services/Movies-resolver/movies-resolver.service";
+import { MoviesAllResolverService } from "./services/Movies-All/movies-all-resolver.service";
+import { BookingResolverService } from "./services/BookingResolver/booking-resolver.service";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
-  { path: "home", component: HomeComponent, data: { state: "home" } },
-  { path: "movies", component: MoviesComponent, data: { state: "movies" } },
-  { path: "seeMyBooking", component: SeeMyBookingComponent },
+  {
+    path: "home",
+    component: HomeComponent,
+    data: { state: "home" },
+    resolve: { movies: MoviesResolverService }
+  },
+  {
+    path: "movies",
+    component: MoviesComponent,
+    data: { state: "movies" },
+    resolve: { movies: MoviesAllResolverService }
+  },
+  {
+    path: "profile/:id",
+    component: SeeMyBookingComponent,
+    resolve: { bookings: BookingResolverService }
+  },
   {
     path: "movies/:id",
     component: MovieComponent,
-    resolve: { cinema: CinemaResolverService }
+    resolve: { cinema: CinemaResolverService, movie: MovieResolverService }
   },
   {
     path: "movies/:id/cinemas/:id2/rooms/:id3/movie_event/:id4/seats",

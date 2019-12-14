@@ -5,6 +5,7 @@ import {
   NgbSlideEventSource
 } from "@ng-bootstrap/ng-bootstrap";
 import { MovieService } from "src/app/services/Movie/movie.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-slider",
@@ -14,11 +15,17 @@ import { MovieService } from "src/app/services/Movie/movie.service";
 export class SliderComponent implements OnInit {
   @Input() limit: number;
   public movies;
-  constructor(private movieservice: MovieService) {}
+  constructor(
+    private movieservice: MovieService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.getMovies();
-    console.dir(this.movies);
+    this.route.data.subscribe(
+      (data: { movies: any }) => (this.movies = data.movies)
+    );
+
+    console.log(this.movies);
   }
 
   getMovies() {
