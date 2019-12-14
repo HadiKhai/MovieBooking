@@ -17,6 +17,7 @@ export class AdminCinemaComponent implements OnInit {
   warning = false;
   validMessage: string = "";
   mySubscription: any;
+  error;
   constructor(
     private cinemaservice: CinemaService,
     private modalService: NgbModal,
@@ -72,7 +73,6 @@ export class AdminCinemaComponent implements OnInit {
     }
     this.router.navigateByUrl("/admin/cinema");
   }
-  error = [];
   deleteCinema(id: number) {
     this.cinemaservice.deleteCinema(id).subscribe(
       data => {
@@ -80,17 +80,14 @@ export class AdminCinemaComponent implements OnInit {
         this.router.navigateByUrl("/admin/cinema");
       },
       error => {
-        console.log(error.error);
-        this.error[0] = error.error;
-        this.error[1] = "warning";
+        this.error = error.error;
+        console.log(this.error);
         this.warning = true;
       },
       () => console.log("data loaded")
     );
   }
   close() {
-    this.error[0] = null;
-    this.error[1] = null;
     this.warning = false;
   }
   getCinemas() {

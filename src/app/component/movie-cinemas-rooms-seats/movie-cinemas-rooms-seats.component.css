@@ -2,15 +2,12 @@
   padding-bottom: 1vh;
   width: 4vh;
   height: 4vh;
-  
 }
 
 .backbut {
   position: absolute;
   transform: translate(3vw, -2.9vh);
 }
-
-
 
 .arr {
   transform: translate(3vh, -3.2vh);
@@ -20,7 +17,6 @@
   width: 5vh;
   max-width: 99999px;
   content: url("/assets/img/seat.png");
-  filter: invert(70%);
 }
 .nowbooking {
   content: url("/assets/img/nowbookingseat.png");
@@ -69,16 +65,14 @@
 }
 
 .but {
-  font-family: "Montserrat",
-    sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: white;
   font-size: 1.5rem;
   background-color: #196cafa2;
 }
 
 .but:hover {
-  font-family: "Montserrat",
-    sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: white;
   font-size: 1.5rem;
   background-color: #1879c9;
@@ -87,8 +81,7 @@
 .active {
   background-color: rgba(15, 58, 122, 0.589);
   border-color: rgba(20, 21, 70, 0.664);
-  font-family: "Montserrat",
-    sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #ffffff;
   text-shadow: 2px 2px 5px #2a628f;
 }
@@ -99,18 +92,14 @@ h1 {
   font-weight: 300;
   text-align: center;
   vertical-align: middle;
-  font-family: "Montserrat",
-  sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
-
 
 .tbl-content {
   height: 50vh;
   overflow-x: auto;
   margin-top: 0px;
-
 }
-
 
 .desc {
   height: 30vh;
@@ -131,7 +120,6 @@ section {
   width: 12vw;
 }
 
-
 table {
   position: relative;
   table-layout: auto;
@@ -142,8 +130,6 @@ table {
   border-radius: 25px;
   border: 2px solid rgb(255, 255, 255);
 }
-
-
 
 .inp {
   background: transparent;

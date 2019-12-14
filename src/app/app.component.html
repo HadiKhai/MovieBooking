@@ -96,6 +96,7 @@
                                 class="inp
                               form-control"
                                 [(ngModel)]="usernameLogin"
+                                [ngModelOptions]="{ standalone: true }"
                               />
                             </div>
                           </div>
@@ -109,6 +110,7 @@
                                 required
                                 class="inp form-control"
                                 [(ngModel)]="passwordLogin"
+                                [ngModelOptions]="{ standalone: true }"
                               />
                             </div>
                           </div>
