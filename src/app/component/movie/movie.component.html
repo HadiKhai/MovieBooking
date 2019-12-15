@@ -13,18 +13,97 @@
             alt="{{ movie.movieName }}"
             x
           />
-          <ng-template #t let-fill="fill">
-            <span class="star" [class.full]="fill === 100">
-              <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
-            </span>
-          </ng-template>
-          <ngb-rating
-            rate="6.25"
-            [starTemplate]="t"
-            [readonly]="false"
-            max="10"
-          >
-          </ngb-rating>
+          <div class="rating mx-0 row justify-content-center">
+            <ng-template #t let-fill="fill">
+              <span
+                (click)="open(rate)"
+                class="star cursor"
+                [class.full]="fill === 100"
+              >
+                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+              </span>
+            </ng-template>
+            <ngb-rating
+              rate="{{ movieAvg }}"
+              [starTemplate]="t"
+              [readonly]="true"
+              max="5"
+            >
+            </ngb-rating>
+            <ngb-alert *ngIf="loginCondition" type="warning" (close)="close()"
+              >Please Login First</ngb-alert
+            >
+
+            <ng-template #rate let-modal>
+              <div class="ratemod">
+                <div class="modal-header">
+                  <h4 class="modal-title">
+                    Rate This Movie
+                  </h4>
+                  <button
+                    type="button"
+                    class="close"
+                    aria-describedby="modal-title"
+                    (click)="modal.dismiss('Cross click')"
+                  >
+                    <span style="color: white;" aria-hidden="true"
+                      >&times;</span
+                    >
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="m-3">
+                    <span>
+                      Your Rating:
+                    </span>
+                    <ng-template #t let-fill="fill">
+                      <span class="star2 cursor" [class.full]="fill === 100">
+                        <span class="half" [style.width.%]="fill">&#9733;</span
+                        >&#9733;
+                      </span>
+                    </ng-template>
+                    <ngb-rating
+                      [(rate)]="userRating"
+                      [starTemplate]="t"
+                      [readonly]="false"
+                      max="5"
+                    >
+                    </ngb-rating>
+                  </div>
+                  <div>
+                    <span class="m-3">
+                      Your Comment:
+                    </span>
+                    <div class="m-3 form-group">
+                      <textarea
+                        class="form-control"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                        [(ngModel)]="ratingComment"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="modal.dismiss('cancel click')"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    class="btn but"
+                    (click)="rateComment()"
+                    (click)="modal.close('Ok click')"
+                  >
+                    Ok
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </div>
         </div>
       </div>
       <div class="col-md-8 ">

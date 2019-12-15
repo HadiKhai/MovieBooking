@@ -2,6 +2,10 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { Component, OnInit, Input, TemplateRef } from "@angular/core";
 import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 import { MovieService } from "src/app/services/Movie/movie.service";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { LoginService } from "src/app/services/Login/login.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-movie",
@@ -13,12 +17,20 @@ export class MovieComponent implements OnInit {
   showAllTimes = false;
   id;
   mySubscription: any;
-
+  movieAvg;
+  userRating;
+  ratingComment;
+  ratingForm: FormGroup;
+  user;
+  loginCondition = false;
+  body;
   constructor(
     private sanitizer: DomSanitizer,
     private movieService: MovieService,
+    private loginService: LoginService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function() {
       return false;
@@ -39,13 +51,37 @@ export class MovieComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
-    this.route.data.subscribe(
-      (data: { movie: any }) => (this.movie = data.movie)
-    );
-
-    console.log(this.movie);
+    this.route.data.subscribe((data: { movie: any; movieAvg: any }) => {
+      this.movie = data.movie;
+      this.movieAvg = data.movieAvg;
+    });
+    this.userRating = this.movieAvg;
+    console.log(this.movieAvg);
   }
+  rateComment() {
+    this.user = this.loginService.getUser();
+    this.body =
+      '{ "movieReviewComment":' +
+      '"' +
+      this.ratingComment +
+      '"' +
+      "," +
+      '\n "movieReviewRating":' +
+      this.userRating +
+      "}";
+    console.log(this.body);
+    this.movieService
+      .createRating(this.id, this.user.customerId, this.body)
+      .subscribe(
+        data => {
+          return true;
+        },
 
+        error => {
+          console.log(error);
+        }
+      );
+  }
   ngOnChanges() {
     this.id = this.route.snapshot.params.id;
     this.getMovieById(this.id);
@@ -69,5 +105,41 @@ export class MovieComponent implements OnInit {
   // hide all showtimes
   hideAllShowtimes(): void {
     this.showAllTimes = false;
+  }
+
+  closeResult: string;
+
+  open(content) {
+    this.user = this.loginService.getUser();
+    console.log(this.user);
+    if (this.user === undefined || this.user === null) {
+      this.loginCondition = true;
+      console.log(this.loginCondition);
+    } else {
+      this.loginCondition = false;
+      this.modalService
+        .open(content, { ariaLabelledBy: "modal-basic-title" })
+        .result.then(
+          result => {
+            this.closeResult = `Closed with: ${result}`;
+          },
+          reason => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+          }
+        );
+    }
+  }
+  close() {
+    this.loginCondition = false;
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }

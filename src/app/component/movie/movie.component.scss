@@ -8,20 +8,66 @@
   background: transparent;
 }
 
+.ratemod {
+  
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #041424ee;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+  
+}
+
+.modal-header{
+  color: white;
+  font-family: "Montserrat",
+  sans-serif;
+}
+
+.modal-body{
+   color: white;
+   font-family: "Montserrat",
+   sans-serif;
+}
+
+
 .star {
   position: relative;
   display: inline-block;
-  font-size: 1.6rem;
+  font-size: 3rem;
   color: #d3d3d3;
+  outline: none !important;
+  border: none !important;
 }
+
+.star2 {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  color: #d3d3d3;
+  outline: none !important;
+  border: none !important;
+}
+
+.star:focus{
+  outline: none;
+}
+
+
+
 .full {
-  color: red;
+  color: rgb(255, 238, 0);
 }
 .half {
   position: absolute;
   display: inline-block;
   overflow: hidden;
-  color: red;
+  color: rgb(255, 238, 0);
 }
 
 .btnadd {
