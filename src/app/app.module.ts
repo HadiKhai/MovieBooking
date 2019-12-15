@@ -61,6 +61,8 @@ import { MoviesResolverService } from "./services/Movies-resolver/movies-resolve
 import { MovieCardAllComponent } from "./component/movie-card-all/movie-card-all.component";
 import { MoviesAllResolverService } from "./services/Movies-All/movies-all-resolver.service";
 import { DatePipe } from "@angular/common";
+import { CinemaComponent } from "./component/cinema/cinema.component";
+import { AgmCoreModule } from "@agm/core";
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +88,8 @@ import { DatePipe } from "@angular/common";
     MovieCinemasRoomsSeatsComponent,
     SearchComponent,
     SeeMyBookingComponent,
-    MovieCardAllComponent
+    MovieCardAllComponent,
+    CinemaComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +113,10 @@ import { DatePipe } from "@angular/common";
     BrowserAnimationsModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyD4cMMnsfm0XOZXHcxUuK73Mms3WS7rgVU"
+    })
   ],
   providers: [
     MovieService,

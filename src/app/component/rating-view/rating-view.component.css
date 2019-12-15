@@ -5,13 +5,21 @@
   color: #d3d3d3;
 }
 .full {
-  color: red;
+  color: rgb(255, 238, 0);
 }
 .half {
   position: absolute;
   display: inline-block;
   overflow: hidden;
-  color: red;
+  color: rgb(255, 238, 0);
+}
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  color: #d3d3d3;
+  outline: none !important;
+  border: none !important;
 }
 
 .btnadd {

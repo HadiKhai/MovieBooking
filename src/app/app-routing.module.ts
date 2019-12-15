@@ -24,6 +24,8 @@ import { SeeMyBookingComponent } from "./component/see-my-booking/see-my-booking
 import { MoviesResolverService } from "./services/Movies-resolver/movies-resolver.service";
 import { MoviesAllResolverService } from "./services/Movies-All/movies-all-resolver.service";
 import { BookingResolverService } from "./services/BookingResolver/booking-resolver.service";
+import { CinemaComponent } from "./component/cinema/cinema.component";
+import { MovieAvgResolverService } from "./services/MovieAvgResoler/movie-avg-resolver.service";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -40,6 +42,10 @@ const routes: Routes = [
     resolve: { movies: MoviesAllResolverService }
   },
   {
+    path: "cinemas",
+    component: CinemaComponent
+  },
+  {
     path: "profile/:id",
     component: SeeMyBookingComponent,
     resolve: { bookings: BookingResolverService }
@@ -47,7 +53,11 @@ const routes: Routes = [
   {
     path: "movies/:id",
     component: MovieComponent,
-    resolve: { cinema: CinemaResolverService, movie: MovieResolverService }
+    resolve: {
+      cinema: CinemaResolverService,
+      movie: MovieResolverService,
+      movieAvg: MovieAvgResolverService
+    }
   },
   {
     path: "movies/:id/cinemas/:id2/rooms/:id3/movie_event/:id4/seats",

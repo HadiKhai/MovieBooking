@@ -5,7 +5,7 @@ body {
   margin: 0;
   background-size: cover;
   background: linear-gradient(0deg, #041625, #2d78b9 80%) fixed no-repeat;
-  
+  overflow-x: hidden;
 }
 
 .cnt {

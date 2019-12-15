@@ -23,6 +23,7 @@ export class RoomComponent implements OnInit {
   disable = true;
   roomArray: any[];
   roomBooleanArrays = [];
+  CapacityRange: number[] = [200, 100, 50];
   constructor(
     private roomservice: RoomService,
     private seatService: SeatService,

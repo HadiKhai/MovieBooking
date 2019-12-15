@@ -210,7 +210,7 @@
   position: relative;
   width: 100vw;
   height: 100%;
-  padding-bottom: 30vh;
+  padding-bottom: 15vh;
   margin: 0;
   background: linear-gradient(0deg, #041625, #184974 60%) fixed no-repeat;
   padding-top: 17vh;
@@ -220,16 +220,14 @@
   height: 10vh;
   background-color: rgba(0, 0, 0, 0.541);
   border-color: rgba(4, 12, 32, 0.699);
-  font-family: "Montserrat",
-    sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: white;
 }
 
 .active {
   background-color: rgba(15, 58, 122, 0.589);
   border-color: rgba(20, 21, 70, 0.664);
-  font-family: "Montserrat",
-    sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #ffffff;
   text-shadow: 2px 2px 5px #2a628f;
 }
@@ -243,14 +241,11 @@ h1 {
   margin-bottom: 15px;
 }
 
-
 .tbl-content {
   height: 50vh;
   overflow-x: auto;
   margin-top: 0px;
-
 }
-
 
 .desc {
   height: 30vh;
@@ -271,7 +266,6 @@ section {
   width: 12vw;
 }
 
-
 table {
   width: 100%;
   table-layout: fixed;
@@ -283,7 +277,6 @@ th {
   font-weight: 500;
   font-size: 12px;
   color: #fff;
-
 }
 
 td {

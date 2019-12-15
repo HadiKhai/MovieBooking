@@ -20,6 +20,9 @@ export class MovieService {
   getMovie(id: number) {
     return this.http.get("server/admin/movies/" + id);
   }
+  getMovieRatingAvg(id) {
+    return this.http.get("server/movies/" + id + "/movieAvgRatings");
+  }
 
   getMovieEvent(cinemaId: number, roomId: number) {
     return this.http.get(
@@ -28,7 +31,7 @@ export class MovieService {
   }
 
   getMovieRating(id: number) {
-    return this.http.get("/server/admin/movies/" + id + "/ratings");
+    return this.http.get("/server/admin/movies/" + id + "/movieRatings");
   }
   createMovie(movie) {
     let body = JSON.stringify(movie);
@@ -46,6 +49,13 @@ export class MovieService {
         "/movies/" +
         movieId,
       body,
+      httpOptions
+    );
+  }
+  createRating(movieId, userId, form) {
+    return this.http.post(
+      "server/movies/" + movieId + "/ratings/" + userId,
+      form,
       httpOptions
     );
   }

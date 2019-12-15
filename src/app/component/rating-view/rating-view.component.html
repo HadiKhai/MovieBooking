@@ -33,16 +33,16 @@
             </td>
             <td>
               <ng-template #t let-fill="fill">
-                <span class="star" [class.full]="fill === 100">
-                  <span class="half" [style.width.%]="fill">&hearts;</span
-                  >&hearts;
+                <span class="star cursor" [class.full]="fill === 100">
+                  <span class="half" [style.width.%]="fill">&#9733;</span
+                  >&#9733;
                 </span>
               </ng-template>
               <ngb-rating
                 rate="{{ rating.movieReviewRating }}"
                 [starTemplate]="t"
                 [readonly]="true"
-                max="10"
+                max="5"
               >
               </ngb-rating>
             </td>
