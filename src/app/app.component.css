@@ -21,7 +21,7 @@
 }
 
 .navbar-c {
-  height: 50vh;
+  height: 70vh;
   background: linear-gradient(
     90deg,
     rgba(3, 4, 12, 0.8) 0%,
@@ -219,30 +219,39 @@
   border-radius: 10px;
   border: 2px solid rgb(255, 255, 255);
   margin-right: 2vw;
-  max-width: 9vh;
-  height: 4.2vh;
+  width: fit-content;
+  height: 6vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }
 .user-but {
   border-radius: 10px;
   border: 2px solid rgb(255, 255, 255);
   margin-right: 2vw;
-  width: fit-content;
-  height: 4.2vh;
-  padding-top: 0;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+  height: 6vh;
+  max-width: fit-content;
 }
 .logout-but {
   border-radius: 10px;
   border: 2px solid rgb(255, 255, 255);
   margin-right: 2vw;
-  max-width: 9vh;
-  height: 4.2vh;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+  width: fit-content;
+  height: 6vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }
 
 .login-but:hover {
+  border-radius: 10px;
+  border: 2px solid #2a628f;
+  margin-right: 2vw;
+}
+.logout-but:hover {
+  border-radius: 10px;
+  border: 2px solid #2a628f;
+  margin-right: 2vw;
+}
+.user-but:hover {
   border-radius: 10px;
   border: 2px solid #2a628f;
   margin-right: 2vw;
@@ -303,6 +312,10 @@ label {
   box-shadow: transparent !important;
 }
 
+.nav-item.active{
+  color: #2a628f;
+}
+
 label.active {
   background-color: rgba(4, 12, 32, 0.699) !important;
   border-color: rgba(4, 12, 32, 0.699) !important;
@@ -326,4 +339,8 @@ label.active {
 
 .prof {
   display: inline-block;
+}
+
+.font-3 {
+  font-size: 0.7rem;
 }

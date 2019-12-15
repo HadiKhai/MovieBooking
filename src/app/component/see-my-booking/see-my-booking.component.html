@@ -2,17 +2,33 @@
   <div class="cont">
     <div class="row">
       <div class="col">
-        <h1>See Bookings</h1>
+        <h1>My Tickets</h1>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div *ngFor="let booking of Bookings" class="col-6 ml-0">
-        <div class="ticket justify-content-center">
-          <div class="tick"></div>
-          <div class="stub"></div>
+    <section>
+      <div class="row justify-content-center">
+        <div *ngFor="let booking of Bookings" class="col-md-6 ml-0">
+          <div class="ticket justify-content-center">
+            <div class="tick">
+              <div class="tickdata">
+                <p class="mov">{{ booking.movieName }}</p>
+                <p>{{ booking.cinemaAddress }}</p>
+                <p>Room: {{ booking.roomName }}</p>
+                <p>Row: {{ booking.seatRow }}</p>
+                <p>Seat: {{ booking.seatColumn }}</p>
+              </div>
+            </div>
+            <div class="stub">
+              <div class="stubdata">
+                <p class="st">23</p>
+                <p class="st">JAN</p>
+                <p>6:30PM</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 

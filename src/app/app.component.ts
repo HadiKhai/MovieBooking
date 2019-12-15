@@ -76,10 +76,7 @@ export class AppComponent {
     this.usernameLogin = "";
     this.passwordLogin = "";
     this.adminLogin = null;
-    console.log(this.wasAdmin);
-    if (this.wasAdmin === true) {
-      this.router.navigateByUrl("/home");
-    }
+    this.router.navigateByUrl("/home");
   }
   login() {
     this.loginservice.signIn(this.usernameLogin, this.passwordLogin).subscribe(

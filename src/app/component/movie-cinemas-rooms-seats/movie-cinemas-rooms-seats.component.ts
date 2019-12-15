@@ -28,6 +28,7 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
   ticketPrice;
   showDetails = false;
   loginCondition = false;
+  success = false;
   error = "Please Login First!";
   warning = false;
   message = "";
@@ -177,12 +178,14 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
           )
           .subscribe(
             data => {
-              this.message = "Successfully Booked";
+              this.message = "Sear Successfully Booked!";
+              this.success = true;
             },
             err => {
               console.error(err.error.text);
               if (err.error.text === "Reserved!") {
-                this.message = "Successfully Booked";
+                this.message = "Seat Successfully Booked!";
+                this.success = true;
                 this.route.data.subscribe(
                   (data: { seats: any }) => (this.seats = data.seats)
                 );
@@ -199,5 +202,8 @@ export class MovieCinemasRoomsSeatsComponent implements OnInit {
   }
   close() {
     this.loginCondition = false;
+  }
+  close2(){
+    this.success = false;
   }
 }

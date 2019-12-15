@@ -25,6 +25,7 @@ export class SeeMyBookingComponent implements OnInit {
     this.route.data.subscribe(
       (data: { bookings: any }) => (this.Bookings = data.bookings)
     );
+    console.log(this.Bookings);
   }
 
   getBookingDetails(id) {

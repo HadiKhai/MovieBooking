@@ -1,11 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-  width: 100vw;
+  height: 100%;
   margin: 0;
-  background: linear-gradient(0deg, #041625, #184974 60%) fixed no-repeat;
-  background-position: center;
   background-size: cover;
+  background: linear-gradient(0deg, #041625, #2d78b9 80%) fixed no-repeat;
+  
+}
+
+.cnt {
+  background: transparent !important;
 }
 
 .modal-content {
@@ -59,4 +63,6 @@ ngb-alert {
 
 .no-pad {
   padding: 0 !important;
+  width: 100%;
+  margin: 0 auto !important;
 }

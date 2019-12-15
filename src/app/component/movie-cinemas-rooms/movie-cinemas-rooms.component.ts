@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { RoomService } from "src/app/services/Room/room.service";
 import { ActivatedRoute } from "@angular/router";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: "app-movie-cinemas-rooms",
@@ -13,7 +14,8 @@ export class MovieCinemasRoomsComponent implements OnInit {
   movieId;
   constructor(
     private roomService: RoomService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private datepipe: DatePipe
   ) {}
 
   ngOnInit() {

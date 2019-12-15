@@ -60,6 +60,7 @@ import { SeeMyBookingComponent } from "./component/see-my-booking/see-my-booking
 import { MoviesResolverService } from "./services/Movies-resolver/movies-resolver.service";
 import { MovieCardAllComponent } from "./component/movie-card-all/movie-card-all.component";
 import { MoviesAllResolverService } from "./services/Movies-All/movies-all-resolver.service";
+import { DatePipe } from "@angular/common";
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,7 +124,8 @@ import { MoviesAllResolverService } from "./services/Movies-All/movies-all-resol
     RoomResolverService,
     LoginService,
     MoviesResolverService,
-    MoviesAllResolverService
+    MoviesAllResolverService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

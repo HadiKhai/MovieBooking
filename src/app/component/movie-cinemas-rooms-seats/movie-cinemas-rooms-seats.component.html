@@ -21,7 +21,9 @@
         <ngb-alert *ngIf="loginCondition" type="warning" (close)="close()">{{
           error
         }}</ngb-alert>
-        <h1>{{ message }}</h1>
+        <ngb-alert *ngIf="success" type="warning" (close)="close2()">{{
+          message
+        }}</ngb-alert>
         <div class="row justify-content-center">
           <div class="tablecnt">
             <table>
