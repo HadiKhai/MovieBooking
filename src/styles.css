@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-  height: 100%;
+  width: 100vw;
+  margin: 0;
+  background: linear-gradient(0deg, #041625, #184974 60%) fixed no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
 .modal-content {

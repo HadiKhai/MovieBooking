@@ -1,11 +1,12 @@
 .cnt {
   position: relative;
   width: 100vw;
-  height: 100%;
   margin: 0;
   background: linear-gradient(0deg, #041625, #184974 60%) fixed no-repeat;
   padding-top: 17vh;
   padding-bottom: 21vh;
+  background-position: center center;
+  background-size: cover;
 }
 h1 {
   font-size: 30px;
