@@ -20,9 +20,10 @@
             </div>
             <div class="stub">
               <div class="stubdata">
-                <p class="st">23</p>
-                <p class="st">JAN</p>
-                <p>6:30PM</p>
+                <p class="st">{{ getDay(booking.bookingId) }}</p>
+                <p class="st">{{ getDayNum(booking.bookingId) }}</p>
+                <p class="st">{{ getMonth(booking.bookingId) }}</p>
+                <p>{{ getTime(booking.bookingId) }}</p>
               </div>
             </div>
           </div>

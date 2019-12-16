@@ -24,6 +24,7 @@ export class MovieComponent implements OnInit {
   user;
   loginCondition = false;
   body;
+  RatingFailed = false;
   constructor(
     private sanitizer: DomSanitizer,
     private movieService: MovieService,
@@ -79,6 +80,7 @@ export class MovieComponent implements OnInit {
 
         error => {
           console.log(error);
+          this.RatingFailed = true;
         }
       );
   }
@@ -131,6 +133,9 @@ export class MovieComponent implements OnInit {
   }
   close() {
     this.loginCondition = false;
+  }
+  close1() {
+    this.RatingFailed = false;
   }
 
   private getDismissReason(reason: any): string {

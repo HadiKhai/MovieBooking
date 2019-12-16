@@ -34,6 +34,10 @@
               >Please Login First</ngb-alert
             >
 
+            <ngb-alert *ngIf="RatingFailed" type="warning" (close)="close1()"
+              >Already Commented! This rating will not be submitted</ngb-alert
+            >
+
             <ng-template #rate let-modal>
               <div class="ratemod">
                 <div class="modal-header">

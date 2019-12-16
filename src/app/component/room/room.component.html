@@ -41,9 +41,7 @@
             <td>
               {{ room.roomCapacity }}
             </td>
-            <td>
-              {{ room.roomStatus }}
-            </td>
+            <td>{{ toggleC(room.roomId) }}</td>
             <td>
               {{ room.roomType }}
             </td>
@@ -59,7 +57,7 @@
                   )
                 "
                 [ngClass]="{
-                  disabled: !room.roomStatus
+                  disabled: !toggleC(room.roomId)
                 }"
               >
                 Generate seats
@@ -77,7 +75,7 @@
                   )
                 "
                 [ngClass]="{
-                  disabled: room.roomStatus
+                  disabled: toggleC(room.roomId)
                 }"
               >
                 Delete seats

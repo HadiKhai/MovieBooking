@@ -59,9 +59,10 @@ export class RoomComponent implements OnInit {
     this.roomArray = this.roomArray[0];
     const size = this.roomArray.length;
     for (let i = 0; i < size; i++) {
-      this.roomBooleanArrays.push(false);
+      this.roomBooleanArrays.push(this.roomArray[i].roomStatus);
     }
-    console.log(this.rooms);
+
+    console.log(this.roomBooleanArrays);
     this.roomForm = new FormGroup({
       roomCapacity: new FormControl("", Validators.required),
       roomStatus: new FormControl("true", Validators.required),
@@ -87,7 +88,11 @@ export class RoomComponent implements OnInit {
         index = i;
       }
     }
-    this.roomBooleanArrays[index] = true;
+    if (this.roomBooleanArrays[index] === true) {
+      this.roomBooleanArrays[index] = false;
+    } else {
+      this.roomBooleanArrays[index] = true;
+    }
   }
   toggleC(id) {
     let index;
@@ -160,26 +165,42 @@ export class RoomComponent implements OnInit {
   }
 
   generateSeats(cinemaId, roomId, roomCapacity, roomStatus) {
+    let index;
+    for (let i = 0; i < this.roomArray.length; i++) {
+      if (roomId === this.roomArray[i].roomId) {
+        index = i;
+      }
+    }
     if (roomStatus) {
       this.seatService.generateSeats(cinemaId, roomId, roomCapacity).subscribe(
         () => {
+          this.roomBooleanArrays[index] = false;
           return true;
         },
         error => console.log(error),
         () => console.log("data loaded")
       );
-      this.router.navigateByUrl("/admin/cinemas/" + this.id + "/rooms");
     }
-    this.router.navigateByUrl("/admin/cinemas/" + this.id + "/rooms");
   }
   deleteSeats(cinemaId, roomId, roomCapacity, roomStatus) {
-    if (!roomStatus) {
-      this.seatService
-        .deleteSeats(cinemaId, roomId, roomCapacity)
-        .subscribe(data => {
-          console.log("success");
-        });
-      this.router.navigateByUrl("/admin/cinemas/" + this.id + "/rooms");
+    let index;
+    for (let i = 0; i < this.roomArray.length; i++) {
+      if (roomId === this.roomArray[i].roomId) {
+        index = i;
+      }
     }
+    this.seatService.deleteSeats(cinemaId, roomId, roomCapacity).subscribe(
+      () => {
+        this.roomBooleanArrays[index] = true;
+        return true;
+      },
+      error => {
+        console.log(error.status);
+        if (error.status === 200) {
+          this.roomBooleanArrays[index] = true;
+        }
+      },
+      () => console.log("data loaded")
+    );
   }
 }

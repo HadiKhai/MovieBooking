@@ -58,8 +58,8 @@ section {
 .stubdata {
   max-width: 20vh;
   position: absolute;
-  top: 35%;
-  left: 25%;
+  top: 30%;
+  left: 33%;
   font-size: 100%;
 }
 
@@ -76,5 +76,5 @@ p {
 .st {
   margin-bottom: 0vh;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
