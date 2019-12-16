@@ -63,6 +63,9 @@ import { MoviesAllResolverService } from "./services/Movies-All/movies-all-resol
 import { DatePipe } from "@angular/common";
 import { CinemaComponent } from "./component/cinema/cinema.component";
 import { AgmCoreModule } from "@agm/core";
+import { CinemaMapComponent } from "./component/cinema-map/cinema-map.component";
+import { CinemaLocationComponent } from "./component/cinema-location/cinema-location.component";
+import { MapResolverService } from "./services/Map-resolver/map-resolver.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +92,9 @@ import { AgmCoreModule } from "@agm/core";
     SearchComponent,
     SeeMyBookingComponent,
     MovieCardAllComponent,
-    CinemaComponent
+    CinemaComponent,
+    CinemaMapComponent,
+    CinemaLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -131,7 +136,8 @@ import { AgmCoreModule } from "@agm/core";
     LoginService,
     MoviesResolverService,
     MoviesAllResolverService,
-    DatePipe
+    DatePipe,
+    MapResolverService
   ],
   bootstrap: [AppComponent]
 })

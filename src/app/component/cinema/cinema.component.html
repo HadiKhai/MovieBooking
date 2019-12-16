@@ -1,3 +1,27 @@
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
+<div class="cnt">
+  <div class="row">
+    <div class="col-4">
+      <div class="cinema-section row px-0">
+        <div
+          *ngFor="let cinema of cinemas"
+          class="tab col-12 cinema-section-detail"
+          [ngClass]="{
+            'cinema-section-detail-custom': toggleC(cinema.cinemaId)
+          }"
+          (click)="toggleComponent(cinema.cinemaId)"
+          (click)="cinemaSave(cinema.cinemaId)"
+        >
+          <a class="tab cursor">
+            <h2>{{ cinema.cinemaName }}</h2>
+            <p>{{ cinema.cinemaAddress }}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <app-cinema-map
+      *ngIf="seeIfToggled()"
+      [cinemaId]="getCinemaId()"
+      class="col-7"
+    ></app-cinema-map>
+  </div>
+</div>

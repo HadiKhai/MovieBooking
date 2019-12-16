@@ -29,6 +29,7 @@ export class MovieCinemasRoomsComponent implements OnInit {
     this.movieId = this.route.snapshot.params.id;
 
     this.getRooms(this.movieId, this.cinemaId);
+    console.log("changed");
   }
   getRooms(movieId, cinemaId) {
     this.roomService.getRoomByCinemaIdAndMovieId(movieId, cinemaId).subscribe(

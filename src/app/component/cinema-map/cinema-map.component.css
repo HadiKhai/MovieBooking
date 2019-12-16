@@ -2,7 +2,9 @@ agm-map {
   height: 70vh;
   width: 70vh;
 }
-
+.see {
+  top: 15%;
+}
 .cnt {
   position: relative;
   width: 100vw;
@@ -10,10 +12,7 @@ agm-map {
   margin: 0;
   padding-top: 20vh;
 }
-.cinema-section-detail-custom {
-  border-color: #041625;
-  background-color: rgba(8, 24, 37, 0.836);
-}
+
 .but {
   position: absolute;
   right: 3vw;

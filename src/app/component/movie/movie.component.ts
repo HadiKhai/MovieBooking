@@ -99,15 +99,6 @@ export class MovieComponent implements OnInit {
       () => console.log("Movie Loaded")
     );
   }
-  // show all showtimes
-  showAllShowtimes(): void {
-    this.showAllTimes = true;
-  }
-
-  // hide all showtimes
-  hideAllShowtimes(): void {
-    this.showAllTimes = false;
-  }
 
   closeResult: string;
 
